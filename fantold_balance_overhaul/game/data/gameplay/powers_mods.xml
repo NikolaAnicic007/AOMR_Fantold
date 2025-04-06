@@ -1,0 +1,123 @@
+<powersmods>
+	<power name="ForestFire" type="ForestFire" godpower="">
+		<cost mergeMode="replace">125.0</cost>
+		<repeatcost mergeMode="replace">25.0</repeatcost>
+		<emberlifespan>20.0</emberlifespan>
+	</power>
+	<power name="Bolt" type="Bolt" godpower="">
+		<cost mergeMode="replace">35.0</cost>
+		<repeatcost mergeMode="replace">15.0</repeatcost>
+	</power>
+	<power name="GreatHunt" type="GreatHunt" godpower="">
+		<maxfood mergeMode="replace" age="1">800.0</maxfood>
+		<maxfood mergeMode="replace" age="2">1200.0</maxfood>
+		<maxfood mergeMode="replace" age="3">1600.0</maxfood>
+	</power>
+	<power name="Fimbulwinter" type="Fimbulwinter" godpower="">
+		<activetime>30.0</activetime> <!-- Patch 18.7603: Reverting values  -->
+		<builduptime>6.0</builduptime>
+		<shutdowntime>3.0</shutdowntime>
+		<repeatcost>50.0</repeatcost>
+	</power>
+	<power name="AbilitySatyr" type="UnitAction">
+		<rangeindicator mergeMode="replace" range="12.0" width="2.0">Arrow</rangeindicator>
+	</power>
+	<power name="AbilityAutomatonAura" type="GeneralEffect">
+		<displaynameid>STR_ABILITY_AUTOMATON_AURA</displaynameid>
+		<rolloverid>STR_ABILITY_AUTOMATON_AURA_LR</rolloverid>
+		<icon>atlantean\static_color\technologies\hephaestus_revenge_icon.png</icon>
+	</power>
+	<power name="AbilityNidhoggBlazingStrafe" type="UnitAction"> <!-- Taken from powers.xml in output directory AppData\Local\Temp\Age of Mythology Retold\Data\game\data\gameplay -->
+		<rangeindicator range="30.0" width="8.0">Arrow</rangeindicator> <!-- Arrow indicator should be 2/3 range -->
+	</power>
+	<power name="AbilityNidhoggAura" type="GeneralEffect">
+		<displaynameid>STR_ABILITY_NIDHOGG_AURA</displaynameid>
+		<rolloverid>STR_ABILITY_NIDHOGG_AURA_LR</rolloverid>
+		<icon>norse\player_color\units\nidhogg_icon.png</icon>
+	</power>
+	<power name="AbilityPhobosSpearOfPanic" type="GeneralEffect">
+		<displaynameid>STR_ABILITY_PHOBOS_SPEAR_OF_PANIC</displaynameid>
+		<rolloverid>STR_ABILITY_PHOBOS_SPEAR_OF_PANIC_LR</rolloverid>
+		<icon>greek\static_color\technologies\phobos_spear_of_panic_icon.png</icon>
+	</power>
+	<power name="AbilityTemporalSoldiers" type="GeneralEffect">
+		<displaynameid>STR_ABILITY_TEMPORAL_SOLDIERS</displaynameid>
+		<rolloverid>STR_ABILITY_TEMPORAL_SOLDIERS_LR</rolloverid>
+		<icon>atlantean\static_color\technologies\temporal_chaos_icon.png</icon>
+	</power>
+	<power name="SpiderLair" type="Spiders" godpower="">
+		<cost>5.0</cost>
+		<repeatcost>5.0</repeatcost>
+		<placement disallowwatercast="" allowsnap="">Full</placement> <!-- Cannot set losprotounit="SpiderEgg" because it interferes with placement -->
+		<rangeindicator range="2.0">Circle</rangeindicator>
+		<rangeindicatorcustomdecal mergeMode="remove">effects\rangedecals\rangedecals_arrow_1stepline</rangeindicatorcustomdecal>
+		<numbertocreate>1</numbertocreate>
+		<separationdistance>0.0</separationdistance>
+		<hatchtime>15.0</hatchtime>
+	</power>
+	<power name="Vision" type="TempUnit" godpower="">
+		<icon>egyptian\static_color\technologies\clairvoyance_icon.png</icon>
+		<cost>0.0</cost>
+		<repeatcost>0.0</repeatcost>
+		<activetime>20.0</activetime>
+	</power>
+    <power name="PlagueOfSerpents" type="TempUnit" godpower="" mergeMode="Replace">
+        <displaynameid>STR_POWER_PLAGUE_OF_SERPENTS</displaynameid>
+        <rolloverid>STR_POWER_PLAGUE_OF_SERPENTS_LR</rolloverid>
+        <icon>egyptian\static_color\god_powers\plague_of_serpents_icon.png</icon>
+        <placement>Full</placement>
+        <minimapeventtime sendalertto="All">10.0</minimapeventtime>
+        <rangeindicator range="14" speed="0.2">Circle</rangeindicator>
+        <soundset type="StartSound" listenertype="All">GodPowerStart</soundset>
+        
+        <cost>60.0</cost>
+        <repeatcost>20.0</repeatcost>
+        <activetime>30.0</activetime>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="0.0" waterprotoid="Helper_PlagueOfSerpentsRespawner">Helper_PlagueOfSerpentsRespawner</createunit>
+        <createunit quantity="2" minradius="0" maxradius="14" delay="0.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="3.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="6.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="9.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="12.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="15.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		<createunit quantity="2" minradius="0" maxradius="14" delay="18.0" permanent="" waterprotoid="SeaSnake">Serpent</createunit>
+		
+		<!-- Add an invisible non blocking unit with lifespan to the TempUnit godpower. 
+		And in techtree an volatile revertible tech that checks if there is at least one of this helper unit (similar tech 
+		like WonderAge checking for a wonder). This way you could activate your tech effect as long the godpower is active. -->
+    </power>
+	
+	<power name="GreatFlood" type="GreatFlood" godpower="">
+		<displaynameid>STR_POWER_GREAT_FLOOD</displaynameid>
+		<rolloverid>STR_POWER_GREAT_FLOOD_LR</rolloverid>
+		<icon>chinese\static_color\god_powers\great_flood_icon.png</icon>
+		<placement>Full</placement>
+		<vectorplacement></vectorplacement>
+		<rangeindicator range="60.0" width="75.0">Arrow</rangeindicator>
+		<camerashake duration="0.50" strength="0.25" range="40.0"></camerashake>
+		<minimapeventtime sendalertto="All">10.0</minimapeventtime>
+		<soundset type="StartSound" listenertype="AllExceptCaster">GodPowerStart</soundset>
+		<soundset type="StartSound" listenertype="IfOnScreenAll">GreatFloodBirth</soundset>
+		<soundset type="ExistSound" listenertype="All" loop="" positional="">GreatFloodExists</soundset>
+		<soundset type="EndSound" listenertype="All">GodPowerEnd</soundset>
+		<activetime>12.0</activetime>
+		<cost>350</cost>
+		<repeatcost>5</repeatcost>
+		<shutdowntime>3.0</shutdowntime>
+		<powerplayerrelation>All</powerplayerrelation>
+		<abstractattacktargettype>Unit</abstractattacktargettype>
+		<abstractattacktargettype>Tree</abstractattacktargettype>
+		<abstractattacktargettype>Building</abstractattacktargettype>
+		<explicitlyrestrictedattacktargettype>AbstractFlyingUnit</explicitlyrestrictedattacktargettype>
+		<explicitlyrestrictedattacktargettype>AbstractFarm</explicitlyrestrictedattacktargettype>
+		<waveprotounit>GreatFlood</waveprotounit>
+		<wavecount>6</wavecount>
+		<spacingdistance>10.0</spacingdistance>
+		<waveradius>5.0</waveradius>
+		<initialattackname>InitialAttack</initialattackname>
+		<initialvelocity>0.0</initialvelocity>
+		<finalvelocity>10.0</finalvelocity>
+		<ramptime>5.0</ramptime>
+		<attackinterval>0.25</attackinterval>
+	</power>
+</powersmods>

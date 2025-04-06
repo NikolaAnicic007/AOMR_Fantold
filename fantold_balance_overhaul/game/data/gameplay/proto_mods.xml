@@ -1,0 +1,3980 @@
+<protomods>
+<!-- File Layout 
+* Buildings
+	* Citadel/Town/Village Center
+	* Non-Military
+	* Monuments
+	* Military Production
+	* Fortresses
+	* Walls, Towers
+	
+* Civilians (Economy)
+
+* Units 	(In order of Age)
+	* Human (By Age | Heroes grouped together)
+	* Siege
+	* Myth
+	* Naval
+* Effects	(Associated proto) : Tech, Abilities, etc.
+* Powers	(Associated proto) : VFX, Units, etc.
+
+N1: Some effects are kept by the host's entry.
+- Temporal Chaos Aura
+N2: Units from the same pantheon kept grouped within the same category.
+N3: Atlantean Heroes kept with base unit.
+N4: Search with CTRL+F & {"Name} 
+N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2 is what you're interested in.
+-->
+
+	<unit name="TownCenter">
+		<train mergeMode="add" row="0" column="3">Hersir</train>
+		<train mergeMode="add" row="0" column="4">Godi</train>
+	</unit>
+	<unit name="VillageCenter">
+		<train mergeMode="add" row="0" column="3">Hersir</train>
+		<train mergeMode="add" row="0" column="4">Godi</train>
+	</unit>
+	<unit name="CitadelCenter">
+		<train mergeMode="add" row="0" column="3">Hersir</train>
+		<train mergeMode="add" row="0" column="4">Godi</train>
+	</unit>
+	
+	<unit name="Armory">
+		<tech row="2" column="0">OrichalcumArrowheads</tech>
+	</unit>
+	<unit name="SkyPassage">
+		<cost mergeMode="remove" resourcetype="Wood">50.0000</cost>
+		<cost resourcetype="Favor">5.0000</cost>
+	</unit>
+	<unit name="Manor">
+		<protoaction>
+			<name>TemporalSoldiers</name>
+			<modifytype>TrainingRate</modifytype>
+			<modifymultiplier>1.25</modifymultiplier>
+			<maxrange>12.0</maxrange>
+			<modelattachment>vfx\glow\monument_aura_set_target_large.xml</modelattachment>
+			<!--<modelattachment>vfx\smoke\corrupted_mist.xml</modelattachment>-->
+			<!--<modelattachment>vfx\glow\void_large.xml</modelattachment>-->
+			<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+		</protoaction>
+		<maxcontained>5</maxcontained>
+	</unit>
+	<unit name="TemporalChaosAura">
+		<obstructionradiusx>0.2000</obstructionradiusx>
+		<obstructionradiusz>0.2000</obstructionradiusz>
+		<movementtype>air</movementtype>
+		<flag>Invulnerable</flag>
+		<flag>NoIdleActions</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>NotSearchable</flag>
+		<flag>NoTieToGround</flag>
+		<flag>NonCollideable</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NotPlayerPlaceable</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+		<tactics>temporal_chaos_vfx.tactics</tactics>
+		<protoaction>
+			<name>TemporalAura</name>
+			<modelattachment>vfx\glow\monument_aura_set_target_medium.xml</modelattachment>
+			<!--<modelattachment>vfx\smoke\corrupted_mist.xml</modelattachment>-->
+			<!--<modelattachment>vfx\glow\void_medium.xml</modelattachment>-->
+			<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+		</protoaction>
+	</unit>
+	
+	<unit name="MonumentToVillagers">
+		<initialhitpoints>450.0000</initialhitpoints>
+		<maxhitpoints>450.0000</maxhitpoints>
+		<cost resourcetype="Food">50.0000</cost>
+		<cost resourcetype="Gold">50.0000</cost>
+		<buildpoints>20.0000</buildpoints>
+	</unit>
+	<unit name="MonumentToSoldiers">
+		<initialhitpoints>500.0000</initialhitpoints>
+		<maxhitpoints>500.0000</maxhitpoints>
+		<cost resourcetype="Food">100.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<buildpoints>28.0000</buildpoints>
+	</unit>
+	<unit name="MonumentToPriests">
+		<initialhitpoints>600.0000</initialhitpoints>
+		<maxhitpoints>600.0000</maxhitpoints>
+		<cost resourcetype="Food">150.0000</cost>
+		<cost resourcetype="Gold">150.0000</cost>
+		<buildpoints>35.0000</buildpoints>
+	</unit>
+	<unit name="MonumentToPharaohs">
+		<initialhitpoints>750.0000</initialhitpoints>
+		<maxhitpoints>750.0000</maxhitpoints>
+		<cost resourcetype="Food">200.0000</cost>
+		<cost resourcetype="Gold">200.0000</cost>
+		<buildpoints>45.0000</buildpoints>
+	</unit>
+	<unit name="MonumentToGods">
+		<initialhitpoints>1200.0000</initialhitpoints>
+		<maxhitpoints>1200.0000</maxhitpoints>
+		<cost resourcetype="Food">600.0000</cost>
+		<cost resourcetype="Gold">600.0000</cost>
+		<buildpoints>60.0000</buildpoints>
+	</unit>
+
+	<unit name="Temple">
+		<flag>KeepGarrisonTimeshift</flag>
+		<tech mergeMode="replace" row="1" column="1">VolcanicForge</tech>
+		<!--<tech mergeMode="add" row="1" column="3">FalconAmulet</tech>--> <!-- Enable if bringing it back -->
+		<tech mergeMode="add" row="1" column="5">PreordainedFate</tech>
+		<tech mergeMode="add" row="1" column="5">HelmOfAwe</tech>
+		<tech mergeMode="add" row="2" column="1">PythianGames</tech>
+		<tech mergeMode="add" row="2" column="2">HornsOfConsecration</tech>
+	</unit>
+	<unit name="GreatHall">
+		<tech mergeMode="add" row="1" column="3">PreordainedFate</tech>
+	</unit>
+	<unit name="MilitaryBarracks">
+		<tech row="2" column="1">OrichalcumMail</tech>
+		<tech row="2" column="2">OrichalcumArrowheads</tech>
+		<tech row="2" column="2">HeroicRenewal</tech>
+	</unit>
+	<unit name="CounterBarracks">
+		<tech mergeMode="add" row="1" column="2">HaloOfTheSun</tech>
+		<tech mergeMode="add" row="2" column="2">HeroicRenewal</tech>
+		<tech mergeMode="replace" row="2" column="3">FrontlineHeroics</tech>
+	</unit>
+	
+	<unit name="Fortress">
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">6.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Palace">
+		<tech mergeMode="Remove" row="2" column="1">HornsOfConsecration</tech>
+		<tech row="2" column="1">HeraldsOfTheHeavens</tech>
+		<tech row="2" column="2">HeroicRenewal</tech>
+		<tech row="2" column="3">HaloOfTheSun</tech>
+		<tech row="2" column="3">DevoteesOfAtlas</tech>
+		<tech row="2" column="4">Petrification</tech>
+		<tech row="2" column="4">TitanShield</tech>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">6.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="MigdolStronghold">
+		<cost resourcetype="Gold">400.0000</cost> <!-- Patch 18.9036: Reverting value -->
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">6.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="HillFort">
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">6.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Baolei">
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">6.000000</damagebonus>
+		</protoaction>
+	</unit>
+	
+	<unit name="SentryTower">
+		<tech row="0" column="1">MirrorTower</tech>
+	</unit>
+	<unit name="MirrorTower">
+		<initialhitpoints>750.0000</initialhitpoints>
+		<maxhitpoints>750.0000</maxhitpoints>
+		<cost resourcetype="Favor" mergeMode="Remove">5.0000</cost>
+		<protoaction>
+			<name>BeamAttack</name>
+			<damage mergeMode="Replace" type="Pierce">39.000000</damage>
+			<damage mergeMode="Replace" type="Divine">6.000000</damage>
+			<damagebonus type="AbstractCloseCombatShip">2.000000</damagebonus>
+			<maxrange>20.000000</maxrange>
+		</protoaction>
+	</unit>
+	
+	<!-- Civilians -->
+	<unit name="VillagerGreek">
+		<trainpoints>13.5000</trainpoints>
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Gather</name>
+			<rate mergeMode="replace" type="Temple">0.12</rate>
+		</protoaction>
+		<protoaction>
+			<name>Repair</name>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+		</protoaction>
+	</unit>
+	<unit name="VillagerEgyptian">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<rate mergeMode="replace" type="AbstractWall">0.375</rate>  <!-- -25% -->
+			<rate mergeMode="replace" type="Building">0.5625</rate>  <!-- -25% -->
+		</protoaction>
+	</unit>
+	<unit name="VillagerNorse">
+		<protoaction>
+			<name>Repair</name>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="House">0.7500</rate>
+		</protoaction>
+	</unit>
+	<unit name="VillagerDwarf">
+		<protoaction>
+			<name>Repair</name>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="House">0.7500</rate>
+		</protoaction>
+	</unit>
+	<unit name="VillagerAtlantean">
+		<train row="255" column="255">NavalShipyard</train>
+		<train mergeMode="remove" row="2" column="4">MirrorTower</train>
+		<train mergeMode="replace" row="255" column="255">MirrorTower</train>
+		<train mergeMode="remove" row="0" column="2">SkyPassage</train>
+	</unit>
+	<unit name="VillagerAtlanteanHero">
+		<train row="255" column="255">NavalShipyard</train>
+		<train mergeMode="remove" row="2" column="4">MirrorTower</train>
+		<train mergeMode="replace" row="255" column="255">MirrorTower</train>
+		<train mergeMode="remove" row="0" column="2">SkyPassage</train>
+	</unit>
+	<unit name="Oracle">
+		<buildlimit>9</buildlimit>
+		<protoaction>
+			<name>AutoGatherFavor</name>
+			<rate type="Favor">0.010000</rate>
+			<modifybase>100.000000</modifybase>
+			<modifymultiplier>0.800000</modifymultiplier>
+			<modifyratecap>25.000000</modifyratecap>
+		</protoaction>
+	</unit>
+	<unit name="OracleHero">
+		<command row="0" column="0">AutoScout</command>
+		<train row="0" column="5">SkyPassage</train>
+		<buildlimit>9</buildlimit>
+		<hotkeycontext>MilitaryAccel</hotkeycontext>
+		<protoaction>
+			<name>AutoGatherFavor</name>
+			<rate type="Favor">0.010000</rate>
+			<modifybase>100.000000</modifybase>
+			<modifymultiplier>0.800000</modifymultiplier>
+			<modifyratecap>30.000000</modifyratecap>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<rate type="SkyPassage">1.500000</rate>
+			<type>Build</type>
+			<anim>MaxLOS</anim>
+			<maxrange>0.2</maxrange>
+		</protoaction>
+	</unit>
+	
+	<!-- Units -->
+	<unit name="Hippeus">
+		<cost resourcetype="Gold">60.0000</cost>
+	</unit>
+	<unit name="Toxotes">
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.000000</rof>
+		</protoaction>
+	</unit>
+	<unit name="Myrmidon">
+		<maxvelocity mergeMode="replace">4.8000</maxvelocity>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof mergeMode="replace">1.250000</rof>
+			<damagebonus mergeMode="add" type="MythUnit">1.250000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Gastraphetoros">
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof mergeMode="replace">2.000000</rof>
+			<damage mergeMode="replace" type="Pierce">18.000000</damage>
+			<damage mergeMode="replace" type="Crush">2.000000</damage> <!-- 1 in Hades tech -->
+			<damagebonus mergeMode="add" type="MythUnit">1.250000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Hetairos">
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus mergeMode="add" type="MythUnit">1.250000</damagebonus>
+		</protoaction>
+	</unit>
+	
+	<!-- Greek Heroes -->
+	<unit name="Heracles">
+		<protoaction>
+			<name>HandAttack</name>
+			<rof mergeMode="replace">1.100000</rof>
+		</protoaction>
+	</unit>
+	<unit name="Achilles">
+		<maxvelocity>5.5000</maxvelocity>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage mergeMode="replace" type="Pierce">10.0000</damage>
+		</protoaction>
+	</unit>
+	<unit name="Atalanta">
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof mergeMode="replace">1.500000</rof>
+			<damage mergeMode="replace" type="Pierce">8.500000</damage>
+		</protoaction>
+	</unit>
+	<unit name="Odysseus">
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus mergeMode="replace" type="MythUnit">7.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttackFlying</name>
+			<damagebonus mergeMode="replace" type="MythUnit">7.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Chiron">
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus mergeMode="replace" type="MythUnit">7.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttackFlying</name>
+			<damagebonus mergeMode="replace" type="MythUnit">7.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Hippolyta">
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof mergeMode="replace">1.500000</rof>
+			<damagebonus mergeMode="replace" type="MythUnit">7.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttackFlying</name>
+			<rof mergeMode="replace">1.500000</rof>
+			<damagebonus mergeMode="replace" type="MythUnit">7.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Bellerophon">
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage mergeMode="replace" type="Pierce">18.000000</damage>
+		</protoaction>
+	</unit>
+	<unit name="Perseus">
+		<protoaction>
+			<name>HandAttack</name>
+			<maxrange mergeMode="replace">1.000000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage mergeMode="replace" type="Pierce">15.000000</damage>
+			<damage mergeMode="add" type="Divine">5.000000</damage>
+			<minrange>1.000000</minrange>
+		</protoaction>
+		<protoaction>
+			<name>FreezeAttack</name>
+			<rof>1.250000</rof>
+		</protoaction>
+	</unit>
+	<unit name="Polyphemus">
+		<maxvelocity>4.2000</maxvelocity>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof mergeMode="replace">3.000000</rof>
+			<damage mergeMode="replace" type="Pierce">25.0000</damage>
+		</protoaction>
+		<protoaction>
+			<name>Gore</name>
+			<maxsizeclass>8</maxsizeclass>
+		</protoaction>
+	</unit>
+	<!-- Greek Heroes -->
+	
+	<unit name="ChariotArcher">
+		<initialhitpoints>100.0000</initialhitpoints>
+		<maxhitpoints>100.0000</maxhitpoints>
+		<los>20.0000</los>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Pierce">11.0000000</damage>
+			<damagebonus type="AbstractInfantry">1.250000</damagebonus>
+			<maxrange>18.000000</maxrange>
+			<projectile>ProjectileArrowFlaming</projectile>
+		</protoaction>
+	</unit>
+	<unit name="WarElephant">
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="AbstractArcher" mergeMode="Remove">1.500000</damagebonus>
+			<damagebonus type="AbstractInfantry">1.500000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="CamelRider">
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="AbstractArcher" mergeMode="Remove">1.250000</damagebonus>
+		</protoaction>
+	</unit>
+	
+	<unit name="Berserk">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="ThrowingAxeman">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">6.000000</damage>
+			<damagebonus type="AbstractInfantry">4.000000</damagebonus>
+			<maxrange>10.000000</maxrange>
+			<projectile>ProjectileAxeFlaming</projectile>
+			<impacteffect>effects\impacts\pierce_medium</impacteffect>
+		</protoaction>
+	</unit>
+	<unit name="Hirdman">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="Huskarl">
+		<initialhitpoints>115.0000</initialhitpoints>
+		<maxhitpoints>115.0000</maxhitpoints>
+		<trainpoints>8.0000</trainpoints>
+		<armor type="Hack" value="0.3000"></armor>
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>HandAttack</name>
+			<damage mergeMode="replace" type="Hack">7.500000</damage>
+		</protoaction>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	
+	<unit name="Hersir">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="Godi">
+		<armor type="Pierce" value="0.2000"></armor>
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage mergeMode="replace" type="Pierce">9.000000</damage>
+		</protoaction>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="HeroOfRagnarok">
+		<populationcount>1</populationcount>
+		<maxvelocity>4.5000</maxvelocity>
+		<cost resourcetype="Food">80.0000</cost>
+		<cost resourcetype="Gold">40.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.2000"></armor>
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="HeroOfRagnarokDwarf">
+		<populationcount>1</populationcount>
+		<maxvelocity>4.5000</maxvelocity>
+		<cost resourcetype="Food">80.0000</cost>
+		<cost resourcetype="Gold">40.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.2000"></armor>
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	
+	<unit name="Brokk">
+		<protoaction>
+			<name>Repair</name>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="House">0.5000</rate>
+		</protoaction>
+	</unit>
+	<unit name="Eitri">
+		<protoaction>
+			<name>Repair</name>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="House">0.5000</rate>
+		</protoaction>
+	</unit>
+	<unit name="ChampionOfFreyr" orderhint="max">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="FollowerOfLoki" orderhint="max">
+		<train row="255" column="255">NavalShipyard</train>
+		<protoaction>
+			<name>Repair</name>
+			<type>Repair</type>
+			<anim>Build</anim>
+			<maxrange>0.2</maxrange>
+			<rate mergeMode="replace" type="AbstractWall">0.5000</rate>
+			<rate mergeMode="replace" type="Building">0.7500</rate>
+			<typedmaxrange type="Dock">2.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	
+	<unit name="Cheiroballista">
+		<trainpoints>20.0000</trainpoints>
+		<cost resourcetype="Wood">120.0000</cost>
+		<cost resourcetype="Gold">60.0000</cost>
+		<armor type="Crush" value="0.6000"></armor>
+		<protoaction>
+			<name>RangedAttack</name>
+			<projectile mergeMode="replace">ProjectileArrowFlamingCheiroballista</projectile>
+		</protoaction>
+	</unit>
+	<unit name="CheiroballistaHero">
+		<cost resourcetype="Wood">210.0000</cost>
+		<cost resourcetype="Gold">105.0000</cost>
+		<protoaction>
+			<name>RangedAttack</name>
+			<projectile mergeMode="replace">ProjectileArrowFlamingCheiroballista</projectile>
+		</protoaction>
+	</unit>
+	<unit name="Contarius"> <!-- Patch 17.64528 : Reverting value. -->
+		<cost resourcetype="Food">60.0000</cost>
+	</unit>
+	<unit name="ContariusHero">
+		<cost resourcetype="Food">110.0000</cost>
+		<cost resourcetype="Gold">70.0000</cost>
+	</unit>
+
+	<unit name="WhiteHorseCavalry">
+		<rechargetime>7.5000</rechargetime>
+		<flag mergeMode="Remove">AutoAbilityStartDisabled</flag>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.200000</rof>
+			<damagebonus type="AbstractArcher">1.500000</damagebonus>
+			<maxrange>12.000000</maxrange>
+		</protoaction>
+	</unit>
+	
+	<!-- For Leto's Pythian Games -->
+	<unit name="ArcusHero">
+		<unittype>HeroArcher</unittype>
+	</unit>
+	<unit name="TurmaHero">
+		<unittype>HeroArcher</unittype>
+	</unit>
+	<unit name="CheiroballistaHero">
+		<unittype>HeroArcher</unittype>
+	</unit>
+	
+	<!-- Siege Units -->
+	<unit name="Helepolis">
+		<cost resourcetype="Wood">250.0000</cost>
+		<cost resourcetype="Gold">200.0000</cost>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.9000"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		<containedhitpointbonus>30.0000</containedhitpointbonus>
+	</unit>
+	<unit name="SiegeTower">
+		<armor type="Hack" value="0.2000"></armor>
+		<armor type="Pierce" value="0.9000"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		<cost resourcetype="Wood">150.0000</cost>
+		<cost resourcetype="Gold">125.0000</cost>
+		<populationcount>4</populationcount>
+		<containedhitpointbonus>30.0000</containedhitpointbonus>
+	</unit>
+	<unit name="PortableRam">
+		<armor type="Crush" value="0.8000"></armor>
+	</unit>	
+	<unit name="Ballista">
+		<trainpoints>15.0000</trainpoints>
+		<populationcount>4</populationcount>
+		<protoaction>
+			<name>AntiWallAttack</name>
+			<damagebonus type="Ship">2.500000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">2.500000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="FireSiphon">
+		<cost resourcetype="Wood">250.0000</cost>
+		<cost resourcetype="Gold">180.0000</cost>
+		<armor type="Hack" value="0.4000"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		<protoaction>
+			<name>AntiWallAttack</name>
+			<rof>1.600000</rof>
+			<damage type="Pierce">20.000000</damage>
+			<damage type="Crush">100.000000</damage>
+			<damagearea>8.000000</damagearea>
+			<damageflags>Nature|Enemy</damageflags>
+			<damagebonus type="Ship">2.000000</damagebonus>
+			<minrange>3.000000</minrange>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileFireSiphonFire</projectile>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.600000</rof>
+			<damage type="Pierce">20.000000</damage>
+			<damage type="Crush">100.000000</damage>
+			<damagebonus type="Ship">2.000000</damagebonus>
+			<minrange>3.000000</minrange>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileFireSiphonFire</projectile>
+		</protoaction>
+		<protoaction>
+			<name>FlameAttack</name>
+			<rof>1.600000</rof>
+			<damage type="Pierce">20.000000</damage>
+			<damage type="Crush">100.000000</damage>
+			<damagebonus type="Ship">2.000000</damagebonus>
+			<minrange>3.000000</minrange>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileFireGiantSpecialAttack</projectile>
+			<type>Attack</type>
+			<attackaction>1</attackaction>
+			<rangedlogic>1</rangedlogic>
+			<anim>RangedAttack</anim>
+			<accuracy>0.8</accuracy>
+			<maxspread>5.0</maxspread>
+			<spreadfactor>0.25</spreadfactor>
+			<trackrating>1.0</trackrating>
+			<volleymode>1</volleymode>
+			<damagearea>4.000000</damagearea>
+			<damageflags>Nature|Enemy</damageflags>
+			<impacteffect>effects\impacts\fireball</impacteffect>
+			<rate type="All">1.0</rate>
+		</protoaction>
+	</unit>
+	<unit name="AxeCart">
+		<armor type="Hack" value="0.3500"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		
+		<protoaction>
+			<name>AntiWallAttack</name>
+			<rof>2.000000</rof>
+		</protoaction>
+		<protoaction>
+			<name>AntiBuildingAttack</name>
+			<rof>2.000000</rof>
+		</protoaction>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>2.000000</rof>
+		</protoaction>
+	</unit>
+
+	<!-- Myth Units  -->
+	<unit name="Minotaur">
+		<protoaction>
+			<name>Gore</name>
+			<rof>1.000000</rof>
+			<damage type="Hack">50.000000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<damagearea>3.000000</damagearea>
+			<coneareaangle>170.000000</coneareaangle>
+			<outerdamageareadistance>2.000000</outerdamageareadistance>
+			<outerdamageareafactor>0.900000</outerdamageareafactor>
+			<fulldamagemaintarget>1</fulldamagemaintarget>
+			<maxrange>0.100000</maxrange>
+			<damageflags>Nature|Enemy</damageflags>
+			<maxsizeclass>7</maxsizeclass>
+		</protoaction>
+	</unit>
+	<unit name="Cyclops">
+		<tactics mergeMode="replace">cyclops.tactics</tactics>	
+		<!-- Allows using AreaHandAttack without needing it for other units that use handattack_throw.tactics -->
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.400000</rof>
+			<damage type="Hack">16.000000</damage>
+			<damage type="Crush">20.000000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<damagearea>3.0</damagearea>
+			<areasortmode>Directional</areasortmode>						 <!-- 'In reference to facing' -->
+			<directionaldamagerefangle>1.57079633</directionaldamagerefangle> <!-- 90° in Radians -->
+			<maxrange>0.500000</maxrange>
+			<damageflags>Nature|Enemy</damageflags>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+		</protoaction>
+		<protoaction>
+			<name>AreaHandAttack</name>
+			<rof>1.400000</rof>
+			<damage type="Hack">16.000000</damage>
+			<damage type="Crush">20.000000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<damagearea>3.0</damagearea>									<!-- By default Radial -->
+			<maxrange>0.500000</maxrange>
+			<damageflags>Nature|Enemy</damageflags>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+		</protoaction>
+		<protoaction>
+			<name>Throw</name>
+			<rof>4.000000</rof>
+			<damage type="Hack">60.000000</damage>
+			<damagebonus type="MythUnit">3.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<maxrange>1.000000</maxrange>
+			<damagearea>3.000000</damagearea>
+			<damageflags>Nature|Enemy</damageflags>	
+		</protoaction>
+	</unit>
+	
+	<unit name="Colossus">
+		<cost resourcetype="Gold">300.0000</cost>
+		<cost resourcetype="Favor">25.0000</cost>
+	</unit>
+	
+	<unit name="Anubite">
+		<cost resourcetype="Food">70.0000</cost>
+		<cost resourcetype="Gold">30.0000</cost>
+		<displayedrange>11.0000</displayedrange> <!-- Feet of the Jackal also increase -->
+		<flag>AreaDamageConstant</flag>
+		<flag>DisplayRange</flag>
+	</unit>
+	
+	<unit name="Scarab">
+		<initialhitpoints>650.0000</initialhitpoints>
+		<maxhitpoints>650.0000</maxhitpoints>
+		<maxvelocity>4.6000</maxvelocity>
+		<cost resourcetype="Food">250.0000</cost>
+		<!--<flag>AreaDamageConstant</flag>-->
+		<protoaction>
+			<name>HandAttack</name>
+			<damagearea mergeMode="add">0.750000</damagearea>
+			<!--We want HandAttack to be AreaDamageConstant but without constant self-death-->
+			<outerdamageareadistance>0.7500000</outerdamageareadistance>
+			<outerdamageareafactor>1.000000</outerdamageareafactor>
+			<damageflags mergeMode="add">Nature|Enemy</damageflags>
+		</protoaction>
+		<protoaction>
+			<name>SelfDestructAttack</name>
+			<outerdamageareadistance>2.500000</outerdamageareadistance>
+			<outerdamageareafactor>0.900000</outerdamageareafactor>
+		</protoaction>
+	</unit>
+	<unit name="Petsuchos">
+		<weightclass>8</weightclass>
+	</unit>
+
+	<unit name="Phoenix">
+		<initialhitpoints>900.0000</initialhitpoints>
+		<maxhitpoints>900.0000</maxhitpoints>
+		<maxvelocity>5.0000</maxvelocity>
+		<armor type="Hack" value="0.1000"></armor>
+		<armor type="Pierce" value="0.2500"></armor>
+		<protoaction>
+			<name>RangedAttack</name>
+			<maxrange mergeMode="replace">7.000000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>FlyingUnitAttack</name>
+			<maxrange mergeMode="replace">7.000000</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="PhoenixFromEgg">
+		<initialhitpoints>900.0000</initialhitpoints>
+		<maxhitpoints>900.0000</maxhitpoints>
+		<maxvelocity>5.0000</maxvelocity>
+		<armor type="Hack" value="0.1000"></armor>
+		<armor type="Pierce" value="0.2500"></armor>
+		<protoaction>
+			<name>RangedAttack</name>
+			<maxrange mergeMode="replace">7.000000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>FlyingUnitAttack</name>
+			<maxrange mergeMode="replace">7.000000</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="PhoenixEgg">
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<armor type="Hack" value="0.2000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+	</unit>
+	<unit name="Avenger">
+		<protoaction>
+			<name>AoEAttack</name>
+			<rof>5.000000</rof> <!-- Doesn't seem to do anything? -->
+			<animationrate>1.00</animationrate>	  <!-- 100 => 95 ticks (1.05)--> 
+			<damage type="Hack">1.250000</damage> <!-- Would be 1.250000 otherwise (1.320000) -->
+			<damagebonus type="MythUnit">3.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<damagearea>4.000000</damagearea>
+			<maxrange>2.000000</maxrange>
+			<damageflags>Nature|Enemy</damageflags>
+		</protoaction>
+	</unit>
+	<unit name="SonOfOsiris">
+		<protoaction>
+			<name>LightningAttack</name>
+			<damage type="Divine">40.00000</damage>
+		</protoaction>
+	</unit>
+	
+	<unit name="Einheri">
+		<trainpoints>15.0000</trainpoints>
+		<cost resourcetype="Gold">150.0000</cost>
+		<cost resourcetype="Favor">15.0000</cost>
+	</unit>
+	<unit name="Draugr">
+		<cost resourcetype="Wood">180.0000</cost>
+		<cost resourcetype="Favor">14.0000</cost>
+		<unittype>LogicalTypeMythUnitThatGeneratesFavor</unittype>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage mergeMode="replace" type="Pierce">8.000000</damage>
+		</protoaction>
+		<protoaction>
+			<name>ChargedRangedAttack</name>
+			<damage mergeMode="replace" type="Pierce">8.000000</damage>
+		</protoaction>
+	</unit>
+	
+	<unit name="RockGiant">
+		<unittype>LogicalTypeMythUnitThatGeneratesFavor</unittype>
+	</unit>
+	
+	<unit name="FenrisWolfBrood">
+		<flag>ForceBuildingData</flag>
+		<maxcontained>5</maxcontained>
+		<train mergeMode="add" row="0" column="0">FenrisWolf</train>
+		<unittype>WolfpackMember</unittype>
+		<cost resourcetype="Food">200.0000</cost>
+		<cost resourcetype="Favor">15.0000</cost>
+		<flag>HasGatherPoint</flag>
+		<hotkeycontext>FenrisAccel</hotkeycontext>
+		<command row="3" column="2">SetGatherPoint</command>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">35.000000</damage>
+			<damagebonus type="MythUnit">3.000000</damagebonus>
+			<damagebonus type="Hero">0.50000</damagebonus>
+			<maxrange>1.000000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>IncreaseDamageWithLikeUnits</name>
+			<maxrange>30</maxrange>
+			<modifydamagetype>Hack</modifydamagetype>
+			<rate type="WolfpackMember">0.10</rate>
+			<!--<modifymultiplier>0.10</modifymultiplier>-->
+			<modifytargetlimit>5</modifytargetlimit>
+			<modifyratecap>1.5</modifyratecap>
+		</protoaction>
+		<protoaction>
+			<name>IncreaseSpeedWithLikeUnits</name>
+			<maxrange>30</maxrange>
+			<modifytype>Speed</modifytype>
+			<rate type="WolfpackMember">0.05</rate>
+			<!--<modifymultiplier>0.05</modifymultiplier>-->
+			<modifytargetlimit>5</modifytargetlimit>
+			<modifyratecap>1.25</modifyratecap>
+		</protoaction>
+	</unit>
+	<unit name="FenrisWolf">
+		<displaynameid>STR_UNIT_FENRIS_WOLF_PUP_NAME</displaynameid>
+		<rollovertextid>STR_UNIT_FENRIS_WOLF_PUP_LR</rollovertextid>
+		<shortrollovertextid>STR_UNIT_FENRIS_WOLF_PUP_SR</shortrollovertextid>
+		<icon>resources\norse\player_color\units\fimbulwinter_wolf_icon.png</icon>
+		<animfile>norse\units\myth\fimbulwinter_wolf\fimbulwinter_wolf.xml</animfile>
+		<soundsetfile>norse\vo\fimbulwinter_wolf\fimbulwinter_wolf.xml</soundsetfile>
+		<obstructionradiusx>0.7500</obstructionradiusx>
+		<obstructionradiusz>0.7500</obstructionradiusz>
+		<selectionradiusx>0.7500</selectionradiusx>
+		<selectionradiusz>1.0000</selectionradiusz>
+		<impacttype>Unarmoured</impacttype>
+		<unitaitype>HandCombative</unitaitype>
+		<autoattackrange>16.0000</autoattackrange>
+		<movementtype>land</movementtype>
+		<turnrate>18.0000</turnrate>
+		<initialhitpoints>180.0000</initialhitpoints>
+		<maxhitpoints>180.0000</maxhitpoints>
+		<weightclass>4</weightclass>
+		<maxvelocity>6.0000</maxvelocity>
+		<populationcount>2</populationcount>
+		<trainpoints>6.0000</trainpoints>
+		<los>16.0000</los>
+		
+		<buildlimit>5.0000</buildlimit>
+		<dynamicbuildlimitunittypes>
+			<unittype>FenrisWolfBrood</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<cost resourcetype="Food">100.0000</cost>
+		<armor type="Hack" value="0.2000"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		<unittype>LogicalTypeNeededForVictory</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeLandMilitary</unittype>
+		<unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+		<unittype>LogicalTypeGarrisonInShips</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>LogicalTypeMythicMythUnit</unittype>
+		<unittype>MilitaryUnit</unittype>
+		<unittype>UnitClass</unittype>
+		<unittype>Unit</unittype>
+		<unittype>MythUnit</unittype>
+		<unittype>AnimalPredator</unittype>
+		<unittype>WolfpackMember</unittype>
+		<unittype>DisplayQueue</unittype> <!-- Necessary to show production queue -->
+		<unittype>LogicalTypeValidBoltTarget</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeValidShiftingSandsTarget</unittype>
+		<unittype>LogicalTypeMythUnitNotTitan</unittype>
+		<unittype>LogicalTypeValidSpyTarget</unittype>
+		<unittype>LogicalTypeValidFrostTarget</unittype>
+		<unittype>LogicalTypeValidTraitorTarget</unittype>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeVillagersAttackResponse</unittype>
+		<unittype>LogicalTypeValidShockwaveTarget</unittype>
+		<unittype>LogicalTypeFreezableMythUnit</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>LogicalTypeMythUnitNotFlying</unittype>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>CorpseDecays</flag>
+		<flag>ShowGarrisonButton</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>ObscuredByUnits</flag>
+		<flag>CommonCommands</flag>
+		<flag>MilitaryCommands</flag>
+		<flag>CreateUnitGroupAutomatically</flag>
+		<tactics>fenris_wolf_brood_pup.tactics</tactics>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">21.000000</damage>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<maxrange>0.500000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>IncreaseDamageWithLikeUnits</name>
+			<maxrange>30</maxrange>
+			<rate type="FenrisWolfBrood">0.15</rate>
+			<modifydamagetype>Hack</modifydamagetype>
+			<modifytargetlimit>1</modifytargetlimit>
+			<modifyratecap>1.15</modifyratecap>
+		</protoaction>
+		<protoaction>
+			<name>IncreaseSpeedWithLikeUnits</name>
+			<maxrange>30</maxrange>
+			<modifytype>Speed</modifytype>
+			<rate type="WolfpackMember">0.02</rate>  <!-- Probably has to do with using rate. -->
+			<modifytargetlimit>5</modifytargetlimit> <!-- For some reason, it's ignoring this --> 
+			<modifyratecap>1.10</modifyratecap>
+		</protoaction>
+	</unit>
+	<unit name="Fafnir">
+		<cost resourcetype="Favor">30.0000</cost>
+		<unittype>LogicalTypeMythUnitThatGeneratesFavor</unittype>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>3.000000</rof>
+			<damage type="Hack">18.000000</damage>
+			<damage type="Crush">8.000000</damage>
+			<damagebonus type="MythUnit">2.00000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<maxrange>4.000000</maxrange>
+			<displayednumberprojectiles>6</displayednumberprojectiles>
+			<impacteffect>effects\impacts\pierce</impacteffect>
+			<passthroughbuildings>1</passthroughbuildings>
+			<maxheight>2</maxheight>
+			<onhiteffect type="ShadingFade" shadingtype="burning" fadetime="1.0" factor="1.4" duration="5.0" targetunittype="Unit"></onhiteffect>
+		</protoaction>
+	</unit>
+	<unit name="Nidhogg">
+		<initialhitpoints>3000.0000</initialhitpoints>
+		<maxhitpoints>3000.0000</maxhitpoints>
+		<unitregen>6.0000</unitregen>
+		<flag>DisplayRange</flag> <!-- Healing area range -->
+		<displayedrange>12.0000</displayedrange>
+		<flag>AutoAbilityStartDisabled</flag> <!-- Fits dash nature more -->
+		<protoaction>
+			<name>BlazingStrafeAttack</name>
+			<rof>3.000000</rof> <!-- Not sure what this does --> <!-- Currently units take 28 damage-->
+			<damage type="Divine">15.000000</damage>
+			<damagebonus type="Building">2.000000</damagebonus>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Hero">0.100000</damagebonus>
+			<minrate type="All">45.0</minrate>	   <!-- Dash Distance -->
+			<modifyamount>15.000000</modifyamount> <!-- Speed -->
+			<maxrange>8.000000</maxrange>
+			<damagearea>8.000000</damagearea>
+			<damageflags>Nature|Enemy</damageflags>
+		</protoaction>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Hack">40.000000</damage>
+			<damage type="Crush">40.000000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Hero">0.100000</damagebonus>
+			<maxrange>7.0</maxrange>
+			<damagearea>8.000000</damagearea>
+			<damageflags>Nature|Enemy</damageflags>
+			<projectile>ProjectileNidhoggInvisible</projectile>
+		</protoaction>
+		<protoaction>
+			<name>FlyingUnitAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Hack">40.000000</damage>
+			<damage type="Crush">40.000000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Hero">0.100000</damagebonus>
+			<maxrange>7.0</maxrange>
+			<damagearea>8.000000</damagearea>
+			<damageflags>Enemy</damageflags>
+			<projectile>ProjectileBallOfFireInvisible</projectile>
+		</protoaction>
+		<protoaction>
+			<name>AuraMythUnitRegen</name>
+			<type>AutoRangedModify</type>
+			<modifyabstracttype>MythUnit</modifyabstracttype>
+			<maxrange>12</maxrange>
+			<persistent>1</persistent>		  <!-- This effect persists within the defined range -->
+			<modifytype>HealRate</modifytype> <!-- For applicable values, see Slush DM pins -->
+			<modifyamount>4</modifyamount>
+			<modifyself>1</modifyself>
+			<includeally>1</includeally>
+			<slowhealmultiplier>0.50</slowhealmultiplier>
+			<modelattachment>greek\godpowers\restoration\healing_vfx.xml</modelattachment>
+			<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+		</protoaction>
+	</unit>
+	
+	<unit name="Caladria">
+		<protoaction>
+			<name>BurstHeal</name>
+			<rof>4.0</rof>
+			<maxrange>18.000000</maxrange>
+			<rate type="LogicalTypeHealed">100.0</rate>
+		</protoaction>
+	</unit>
+	<unit name="Automaton">
+		<initialhitpoints>250.0000</initialhitpoints>
+		<maxhitpoints>250.0000</maxhitpoints>
+		<maxvelocity>4.5000</maxvelocity>
+		<spawn type="dead" count="1" skipplacementcheck="">LingeringAutomatonArmorAura</spawn>
+		<cost resourcetype="Gold">120.0000</cost>
+		<cost resourcetype="Favor">12.0000</cost>
+		<armor type="Hack" value="0.5000"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<flag>DisplayRange</flag>
+		<flag>DisplayRangeOverride</flag>		<!-- Makes it so you can see all Automaton range -->
+		<displayedrange>6.0000</displayedrange> <!-- From monuments -->
+		<tactics>handattack_heal.tactics</tactics>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.000000</rof>
+			<damage type="Hack">12.000000</damage>
+			<damagebonus type="MythUnit">3.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<maxrange>0.500000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>Heal</name>
+			<type>Heal</type>
+			<rate type="Automaton">15.00000</rate>
+			<slowhealmultiplier>0.50</slowhealmultiplier>
+			<maxrange>0.500000</maxrange>
+			<donotignoredead mergeMode="remove">1</donotignoredead>
+		</protoaction>
+		<protoaction>
+			<name>AutomatonArmorAura</name>
+			<type>AutoRangedModify</type>
+			<modifyabstracttype>Unit</modifyabstracttype>
+			<forbidabstracttype>Ship</forbidabstracttype>
+			<maxrange>6.000000</maxrange>
+			<nostack>1</nostack>
+			<nostackignorepuid>1</nostackignorepuid>
+			<persistent>1</persistent>
+			<modifytype>Armor</modifytype>
+			<modifymultiplier>1.10</modifymultiplier>
+			<modelattachment>vfx\glow\gourd_glow_green.xml</modelattachment>
+			<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+		</protoaction>
+	</unit>
+	<unit name="Promethean"> <!-- Patch 17.64528 : Reverting value. -->
+		<cost resourcetype="Favor">8.0000</cost>
+	</unit>
+	
+	<unit name="Behemoth">
+		<initialhitpoints>900.0000</initialhitpoints>
+		<maxhitpoints>900.0000</maxhitpoints>
+		<armor type="Hack" value="0.4000"></armor>
+		<unitregen>3.0000</unitregen>
+		<!-- Patch 17.64528 : 20 Hack 90 Crush, 1x Buildings, 2x Myth Units
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">15.000000</damage>
+			<damage type="Crush">22.500000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Building">4.000000</damagebonus>
+		</protoaction>
+		-->
+	</unit>
+	<unit name="StymphalianBird">
+		<maxvelocity>4.6000</maxvelocity>
+		<protoaction>
+			<name>RangedAttack</name>
+			<onhiteffect mergeMode="replace" type="DamageOverTime" dmgtype="Pierce" duration="6.000000" rate="2.000000"></onhiteffect>
+			<onhiteffect mergeMode="replace" type="Attach" targetunittype="Unit" proto="VFXBleed" attachbone="spine" duration="6.000000"></onhiteffect>
+		</protoaction>
+	</unit>
+	
+	<unit name="YaZi">
+		<cost resourcetype="Wood">140.0000</cost>
+		<cost resourcetype="Favor">15.0000</cost>
+		<protoaction>
+			<name>FlashStrike</name>
+			<rof>0.500000</rof>
+			<damage type="Hack">15.000000</damage>
+			<damagebonus type="MythUnit">2.0000000</damagebonus>
+			<damagebonus type="AbstractVillager">0.500000</damagebonus>
+			<damagebonus type="Hero">0.250000</damagebonus>
+			<maxrange>15.000000</maxrange>
+			<modifyduration>500</modifyduration>
+			<projectile>ProjectileYaZiDash</projectile>
+			<attachprotounit>SunRayRevealer</attachprotounit>
+		</protoaction>
+	</unit>
+	<!-- Naval --> 
+	<unit name="FishingShipGreek">
+		<cost resourcetype="Food">25.0000</cost>
+		<cost resourcetype="Wood">25.0000</cost>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<train row="0" column="0">SignalTorch</train>
+		<train row="1" column="3">Aquafarm</train>
+		<train row="0" column="5">Dock</train>
+		<train row="255" column="255">NavalShipyard</train>
+		<train row="255" column="255">CoastalSentryTower</train>
+		<train row="255" column="255">Market</train>
+		<hotkeycontext>BuildFishingShipGreekAccel</hotkeycontext>
+		<protoaction>
+			<name>Gather</name>
+			<dropsitegathering>1</dropsitegathering>
+			<rate type="FishResource">0.800000</rate>
+			<rate type="AbstractAquafarm">0.500000</rate>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<rate type="Dock">0.500000</rate>
+			<rate type="Building">1.000000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="FishingShipEgyptian">
+		<cost resourcetype="Food">25.0000</cost>
+		<cost mergeMode="remove" resourcetype="Wood">50.0000</cost>
+		<cost resourcetype="Gold">25.0000</cost>
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="3.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<train row="0" column="5">Dock</train>
+		<train row="255" column="255">NavalShipyard</train>
+		<train row="255" column="255">CoastalSentryTower</train>
+		<train row="255" column="255">Market</train>
+		<hotkeycontext>BuildFishingShipEgyptianAccel</hotkeycontext>		
+		<protoaction>
+			<name>Gather</name>
+			<dropsitegathering>1</dropsitegathering>
+			<rate type="FishResource">0.80000</rate>
+			<rate type="AbstractAquafarm">0.500000</rate>
+			<typedmaxrange type="AbstractAquafarm">0.25</typedmaxrange>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<rate type="Dock">0.500000</rate>
+			<rate type="Building">0.800000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="FishingShipNorse">
+		<cost resourcetype="Food">25.0000</cost>
+		<cost resourcetype="Wood">25.0000</cost>
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="3.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<train row="0" column="0">SignalTorch</train>
+		<train row="0" column="5">Dock</train>
+		<train row="1" column="3">Aquafarm</train>
+		<train row="255" column="255">NavalShipyard</train>
+		<train row="255" column="255">CoastalSentryTower</train>
+		<train row="255" column="255">Market</train>
+		<hotkeycontext>BuildFishingShipNorseAccel</hotkeycontext>
+		<protoaction>
+			<name>Gather</name>
+			<dropsitegathering>1</dropsitegathering>
+			<rate type="FishResource">0.720000</rate>
+			<rate type="AbstractAquafarm">0.500000</rate>
+			<typedmaxrange type="AbstractAquafarm">0.25</typedmaxrange>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<rate type="Dock">0.500000</rate>
+			<rate type="Building">1.000000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="FishingShipAtlantean">
+		<cost resourcetype="Food">25.0000</cost>
+		<cost resourcetype="Wood">25.0000</cost>
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="3.0000">SiegeBireme</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="2.0000">Servant</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<train row="0" column="0">SignalTorch</train>
+		<train row="0" column="5">Dock</train>
+		<train row="1" column="3">Aquafarm</train>
+		<train row="255" column="255">NavalShipyard</train>
+		<train row="255" column="255">CoastalSentryTower</train>
+		<train row="255" column="255">CoastalMirrorTower</train>
+		<train row="255" column="255">Market</train>
+		<hotkeycontext>BuildFishingShipAtlanteanAccel</hotkeycontext>
+		<protoaction>
+			<name>Gather</name>
+			<dropsitegathering>0</dropsitegathering>
+			<rate type="FishResource">0.500000</rate> <!-- Balanced with 30 sec return distance -->
+			<rate type="AbstractAquafarm">0.500000</rate>
+			<typedmaxrange type="AbstractAquafarm">0.25</typedmaxrange>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<rate type="Dock">0.500000</rate>
+			<rate type="Building">1.200000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="FishingShipChinese">
+		<cost resourcetype="Food">25.0000</cost>
+		<cost resourcetype="Wood">25.0000</cost>
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype>
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<train row="0" column="0">SignalTorch</train>
+		<train row="0" column="5">Dock</train>
+		<train row="1" column="3">Aquafarm</train>
+		<train row="255" column="255">NavalShipyard</train>
+		<train row="255" column="255">CoastalSentryTower</train>
+		<train row="255" column="255">Market</train>
+		<hotkeycontext>BuildFishingShipChineseAccel</hotkeycontext>
+		<protoaction>
+			<name>Gather</name>
+			<dropsitegathering>1</dropsitegathering>
+			<rate type="FishResource">0.880000</rate>
+			<rate type="AbstractAquafarm">0.450000</rate>
+			<typedmaxrange type="AbstractAquafarm">0.25</typedmaxrange>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<rate type="Dock">0.500000</rate>
+			<rate type="Building">1.000000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+
+	<unit name="TransportShipGreek"> <!-- Trade Ship | Naval Pop Changes --> 
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.6000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<maxvelocity>5.2500</maxvelocity>
+
+		<trainpoints>20.0000</trainpoints>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">30.0000</cost>
+		<unittype>TradeUnit</unittype>
+		<unittype>EconomicUnit</unittype>
+		<unittype>ValidIdleVillager</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>	
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeEasySelectAvoid</unittype>
+		<flag>AutoTrainable</flag>
+		<carrycapacity resourcetype="Gold">1000.0000</carrycapacity>
+		<carrycapacity resourcetype="Wood">500.0000</carrycapacity>
+		<command row="3" column="2">SeekShelter</command>
+		<tactics>trade.tactics</tactics>
+		<protoaction>
+			<name>Trade</name>
+			<modifyamount>0.1</modifyamount> <!-- Bonus for Trading with Ally -->
+			<rate type="Dock">0.500000</rate>
+			<minrate type="Wood">1.000000</minrate>
+			<rate type="Market">0.001000</rate>
+			<maxrange>2.5</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="TransportShipEgyptian">
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.6000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<maxvelocity>5.2500</maxvelocity>
+		
+		<trainpoints>20.0000</trainpoints>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">30.0000</cost>
+		<unittype>TradeUnit</unittype>
+		<unittype>EconomicUnit</unittype>
+		<unittype>ValidIdleVillager</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>	
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeEasySelectAvoid</unittype>
+		<flag>AutoTrainable</flag>
+		<carrycapacity resourcetype="Gold">1000.0000</carrycapacity>
+		<carrycapacity resourcetype="Wood">500.0000</carrycapacity>
+		<command row="3" column="2">SeekShelter</command>
+		<tactics>trade.tactics</tactics>
+		<protoaction>
+			<name>Trade</name>
+			<modifyamount>0.1</modifyamount> <!-- Bonus for Trading with Ally -->
+			<rate type="Dock">0.450000</rate>
+			<minrate type="Wood">1.000000</minrate>
+			<rate type="Market">0.001000</rate>
+			<maxrange>2.5</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="TransportShipNorse">
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.6000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="4.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<maxvelocity>5.2500</maxvelocity>
+		
+		<trainpoints>20.0000</trainpoints>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">30.0000</cost>
+		<unittype>TradeUnit</unittype>
+		<unittype>EconomicUnit</unittype>
+		<unittype>ValidIdleVillager</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>	
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeEasySelectAvoid</unittype>
+		<flag>AutoTrainable</flag>
+		<carrycapacity resourcetype="Gold">1000.0000</carrycapacity>
+		<carrycapacity resourcetype="Wood">500.0000</carrycapacity>
+		<command row="3" column="2">SeekShelter</command>
+		<tactics>trade.tactics</tactics>
+		<protoaction>
+			<name>Trade</name>
+			<modifyamount>0.1</modifyamount> <!-- Bonus for Trading with Ally -->
+			<rate type="Dock">0.500000</rate>
+			<minrate type="Wood">1.000000</minrate>
+			<rate type="Market">0.001000</rate>
+			<maxrange>2.5</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="TransportShipAtlantean">
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.6000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<maxvelocity>5.6000</maxvelocity>
+		
+		<trainpoints>20.0000</trainpoints>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">30.0000</cost>
+		<unittype>TradeUnit</unittype>
+		<unittype>EconomicUnit</unittype>
+		<unittype>ValidIdleVillager</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeEasySelectAvoid</unittype>
+		<flag>AutoTrainable</flag>
+		<carrycapacity resourcetype="Gold">1000.0000</carrycapacity>
+		<carrycapacity resourcetype="Wood">500.0000</carrycapacity>
+		<command row="3" column="2">SeekShelter</command>
+		<tactics>trade.tactics</tactics>
+		<protoaction>
+			<name>Trade</name>
+			<modifyamount>0.1</modifyamount> <!-- Bonus for Trading with Ally -->
+			<rate type="Dock">0.475000</rate> <!-- 0.7 * 3.8 / Speed -->
+			<minrate type="Wood">1.000000</minrate> <!-- Bonus: % relative to gold income; set to 1/0.85 -->
+			<rate type="Market">0.001000</rate>
+			<maxrange>2.5</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="TransportShipChinese">
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.6000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>		 <!-- (-20% pop) instead of -1 pop -->
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype> 
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<maxvelocity>5.2500</maxvelocity>
+		
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">30.0000</cost>
+		<trainpoints>20.0000</trainpoints>
+		<unittype>TradeUnit</unittype>
+		<unittype>EconomicUnit</unittype>
+		<unittype>ValidIdleVillager</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeEasySelectAvoid</unittype>
+		<flag>AutoTrainable</flag>
+		<carrycapacity resourcetype="Gold">1000.0000</carrycapacity>
+		<carrycapacity resourcetype="Wood">500.0000</carrycapacity>
+		<command row="3" column="2">SeekShelter</command>
+		<tactics>trade.tactics</tactics>
+		<protoaction>
+			<name>Trade</name>
+			<modifyamount>0.1</modifyamount> <!-- Bonus for Trading with Ally -->
+			<rate type="Dock">0.500000</rate>
+			<minrate type="Wood">1.000000</minrate>
+			<rate type="Market">0.001000</rate>
+			<maxrange>2.5</maxrange>
+		</protoaction>
+	</unit>
+
+	<unit name="Dock" mergeMode="Replace"> <!--  Naval Pop | Trade Ship | Shipyard Changes --> 
+		<displaynameid>STR_BLD_DOCK_NAME</displaynameid>
+		<rollovertextid>STR_BLD_DOCK_LR</rollovertextid>
+		<shortrollovertextid>STR_BLD_DOCK_SR</shortrollovertextid>
+		<icon>resources\shared\static_color\buildings\dock_icon.png</icon>
+		<animfile culture="greek">greek\buildings\dock\dock.xml</animfile>
+		<animfile culture="egyptian">egyptian\buildings\dock\dock.xml</animfile>
+		<animfile culture="norse">norse\buildings\dock\dock.xml</animfile>
+		<animfile culture="atlantean">atlantean\buildings\dock\dock.xml</animfile>
+		<animfile culture="chinese">chinese\buildings\dock\dock.xml</animfile>
+		<soundsetfile>shared\sfx\buildings\dock.xml</soundsetfile>
+		<obstructionradiusx>3.0000</obstructionradiusx>
+		<obstructionradiusz>3.0000</obstructionradiusz>
+		<impacttype>Stone</impacttype>
+		<screenshakeondestruction>0.400</screenshakeondestruction>
+		<partisantype>Militia</partisantype>
+		<partisancount>3</partisancount>
+		<initialhitpoints>1800.0000</initialhitpoints>
+		<maxhitpoints>1800.0000</maxhitpoints>
+		<armor type="Hack" value="0.4000"></armor>
+		<armor type="Pierce" value="0.9000"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<buildpoints>40.0000</buildpoints>
+		
+		<maxcontained>20.0000</maxcontained>
+		<los>36.0000</los>
+		<buildlimit>10.0000</buildlimit>
+		<cost resourcetype="Wood">150.0000</cost>
+		<cost resourcetype="Gold">150.0000</cost>
+		<flag>DisplayRange</flag>
+		<flag>DisplayRangeOverride</flag>
+		<displayedrange>35</displayedrange>
+		
+		<carrycapacity resourcetype="Food">50.0000</carrycapacity>
+		<carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+		<carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+		<unittype>TradeableTo</unittype>
+		<!--<unittype>TradeableFrom</unittype>--> <!-- Used when trade happens between two docks -->
+		<!--<unittype>GoldDropsite</unittype>-->
+		
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>Building</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>
+		<unittype>AbstractDock</unittype>
+		<unittype>Dropsite</unittype>
+		<unittype>FoodDropsite</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeTartarianGateValidOverlapPlacement</unittype>
+		<unittype>LogicalTypeNeededForVictory</unittype>
+		<unittype>LogicalTypeBuildingThatCanBeEmpowered</unittype>
+		<unittype>LogicalTypeBuildingNotWonderOrTitan</unittype>
+		<unittype>LogicalTypeBuildingSmall</unittype>
+		<unittype>LogicalTypeValidForestProtectionPlacement</unittype>
+		<hotkeycontext>DockAccel</hotkeycontext>
+		<!-- Row 0 : Units -->
+		<!-- Greek -->
+		<train row="0" column="0">FishingShipGreek</train>
+		<train row="0" column="1">TransportShipGreek</train>
+		<train row="0" column="2">Scylla</train>
+		<train row="0" column="3">Carcinos</train>
+		<train row="0" column="4">TheArgo</train>
+		<train row="0" column="5">Pegasus</train>
+		<!-- Egyptian -->
+		<train row="0" column="0">FishingShipEgyptian</train>
+		<train row="0" column="1">TransportShipEgyptian</train>
+		<train row="0" column="2">Leviathan</train>
+		<train row="0" column="3">WarTurtle</train>
+		<train row="0" column="5">SeaSnakeScout</train>
+		<!-- Norse -->
+		<train row="0" column="0">FishingShipNorse</train>
+		<train row="0" column="1">TransportShipNorse</train>
+		<train row="0" column="2">Kraken</train>
+		<train row="0" column="3">JormunElver</train>
+		<!-- Atlantean -->
+		<train row="0" column="0">FishingShipAtlantean</train>
+		<train row="0" column="1">TransportShipAtlantean</train>
+		<train row="0" column="2">Nereid</train>
+		<train row="0" column="3">ManOWar</train>
+		<train row="0" column="4">Servant</train>
+		<!-- Chinese -->
+		<train row="0" column="0">FishingShipChinese</train>
+		<train row="0" column="1">TransportShipChinese</train>`
+		<train row="0" column="2">ChiWen</train>
+		<train row="0" column="3">XuanWu</train>
+		
+		<!-- Row 1 : Tech -->
+		<tech row="1" column="0">PurseSeine</tech>
+		<tech row="1" column="0">SaltAmphora</tech>
+		<tech row="1" column="1">EnclosedDeck</tech>
+		<tech row="1" column="1">Coinage</tech>
+		<tech row="1" column="5">ConscriptSailors</tech>
+		<!-- Greek -->
+		<tech row="1" column="2">Anastrophe</tech>
+		<tech row="1" column="2">Argonauts</tech>
+		<tech row="1" column="2">ChthonicRites</tech>
+		<!-- Egyptian -->
+		<tech row="1" column="2">FuneralBarge</tech>
+		<tech row="1" column="2">SolarBarque</tech>
+		<tech row="1" column="2">CrimsonLinen</tech>
+		<!-- Norse -->
+		<tech row="1" column="2">LongSerpent</tech>
+		<tech row="1" column="2">ArcticWinds</tech>
+		<tech row="1" column="2">WrathOfTheDeep</tech>
+		<tech row="1" column="2">GraspOfRan</tech>
+		<!-- Atlantean -->
+		<tech row="1" column="2">PioneerOfTheSkies</tech>
+		<tech row="1" column="2">Daktyloi</tech>
+		<tech row="1" column="2">DaughtersOfTheSea</tech>
+		<!-- Chinese -->
+		<tech row="1" column="0">FishBasket</tech>
+		<tech row="1" column="2">RedCliffsFleet</tech>
+		<tech row="1" column="2">DroughtShips</tech>
+		<tech row="1" column="2">Maelstrom</tech>
+		
+		<!-- Row 2 : Buildings -->
+		<train row="2" column="1" mergeMode="add">Market</train>
+		<train row="2" column="2" mergeMode="add">CoastalSentryTower</train>
+		<train row="2" column="3" mergeMode="add">NavalShipyard</train>
+		
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>TieToWaterSurface</flag>
+		<flag>SnapPlacement</flag>
+		<flag>HasGatherPoint</flag>
+		<flag>CreateUnitGroupAutomatically</flag>
+		<contain>AbstractFishingShip</contain>
+		<contain>AbstractTransportShip</contain>
+		<command row="2" column="5">MoveNearbyTransportShipToUnit</command>
+		<command row="1" column="1">CancelBuilding</command>
+		<command row="3" column="0">SetGatherPoint</command>
+		<command row="3" column="1">Eject</command>
+		<command row="3" column="2">EjectBackToWork</command>
+		<command row="3" column="4">UnitRepairBuilding</command>
+		<command row="3" column="5">Delete</command>
+		<tactics>dock.tactics</tactics>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.000000</rof>
+			<damage type="Pierce">8.000000</damage>
+			<maxrange>18.000000</maxrange>
+			<projectile>ProjectileArrow</projectile>
+			<activeifcontainsunits>1</activeifcontainsunits>
+			<containscalebasedamage>1</containscalebasedamage>
+			<scalebycontainedunittype>
+				<rate type="AbstractFishingShip">0.500000</rate>
+			</scalebycontainedunittype>
+		</protoaction>
+		<protoaction>
+			<name>AreaHeal</name>
+			<modifyamount>0</modifyamount>
+			<maxrange>15</maxrange>
+			<slowhealmultiplier>0.50</slowhealmultiplier>
+		</protoaction>
+		<protoaction>
+			<name>Build</name>
+			<type>Build</type>
+			<anim>Idle</anim>
+			<rate type="Market">0.000100</rate>
+			<rate type="NavalShipyard">0.000100</rate>
+			<rate type="AbstractCoastalTower">0.000100</rate>
+		</protoaction>
+	</unit>
+	<unit name="NavalShipyard" mergeMode="Remove">
+	</unit>
+	<unit name="NavalShipyard" mergeMode="Add">
+		<displaynameid>STR_BLD_NAVAL_SHIPYARD_NAME</displaynameid>
+		<rollovertextid>STR_BLD_NAVAL_SHIPYARD_LR</rollovertextid>
+		<icon>resources\shared\static_color\buildings\dock_icon.png</icon>
+		<animfile culture="greek">spc\buildings\naval_shipyard_greek\naval_shipyard_greek.xml</animfile>
+		<animfile culture="egyptian">spc\buildings\naval_shipyard_egyptian\naval_shipyard_egyptian.xml</animfile>
+		<animfile culture="norse">spc\buildings\naval_shipyard_norse\naval_shipyard_norse.xml</animfile>
+		<soundsetfile>shared\sfx\buildings\dock.xml</soundsetfile>
+		<placementfile>naval_shipyard.xml</placementfile>
+		<obstructionradiusx>4.0000</obstructionradiusx>
+		<obstructionradiusz>4.0000</obstructionradiusz>
+		<impacttype>Stone</impacttype>
+		<screenshakeondestruction>0.400</screenshakeondestruction>
+		<partisantype>Militia</partisantype>
+		<partisancount>4</partisancount>
+		<initialhitpoints>1200.0000</initialhitpoints>
+		<maxhitpoints>1200.0000</maxhitpoints>
+		<buildpoints>30.0000</buildpoints>
+		<maxcontained>5.0000</maxcontained>
+		<los>9.0000</los>
+		<cost resourcetype="Wood">100.0000</cost>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.9000"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>Building</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>LogicalTypeBuildingLarge</unittype>
+		<unittype>MilitaryBuilding</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>LogicalTypeMilitaryProductionBuilding</unittype>
+		<unittype>AbstractDock</unittype>
+		<!-- Not Dropsite / Food Dropsite-->
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeNeededForVictory</unittype>
+		<unittype>LogicalTypeBuildingThatCanBeEmpowered</unittype>
+		<unittype>LogicalTypeBuildingNotWonderOrTitan</unittype>
+		<unittype>LogicalTypeValidForestProtectionPlacement</unittype>
+		<hotkeycontext>ShipyardAccel</hotkeycontext>
+		<!-- Row 0 : Units -->
+		<!-- Greek -->
+		<train row="0" column="0">Trireme</train>
+		<train row="0" column="1">Pentekonter</train>
+		<train row="0" column="2">Juggernaut</train>
+		<train row="0" column="3">TheArgo</train>
+		<!-- Egyptian -->
+		<train row="0" column="0">Kebenit</train>
+		<train row="0" column="1">RammingGalley</train>
+		<train row="0" column="2">WarBarge</train>
+		<!-- Norse -->
+		<train row="0" column="0">Longboat</train>
+		<train row="0" column="1">Dreki</train>
+		<train row="0" column="2">DragonShip</train>
+		<!-- Atlantean -->
+		<train row="0" column="0">Bireme</train>
+		<train row="0" column="1">FireShip</train>
+		<train row="0" column="2">SiegeBireme</train>
+		<!-- Chinese -->
+		<train row="0" column="0">DouJian</train>
+		<train row="0" column="1">MengChong</train>
+		<train row="0" column="2">LouChuan</train>
+		
+		<!-- Row 1 : Tech -->
+		<tech row="1" column="0">HeavyWarships</tech>
+		<tech row="1" column="0">ChampionWarships</tech>
+		<tech row="1" column="4">HeroicFleet</tech>
+		<tech row="1" column="5">ConscriptSailors</tech>
+		<!-- Greek -->
+		<tech row="1" column="1">Anastrophe</tech>
+		<tech row="1" column="1">Argonauts</tech>
+		<!-- Egyptian -->
+		<tech row="1" column="1">FuneralBarge</tech>
+		<tech row="1" column="1">SolarBarque</tech>
+		<!-- Norse -->
+		<tech row="1" column="1">LongSerpent</tech>
+		<tech row="1" column="1">ArcticWinds</tech>
+		<tech row="1" column="1">GraspOfRan</tech>
+		<!-- Atlantean -->
+		<tech row="1" column="1">PioneerOfTheSkies</tech>
+		<tech row="1" column="1">Daktyloi</tech>
+		<!-- Chinese -->
+		<tech row="1" column="1">RedCliffsFleet</tech>
+		<tech row="1" column="1">DroughtShips</tech>
+		<tech row="1" column="1">Maelstrom</tech>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>SnapPlacement</flag>
+		<flag>TieToWaterSurface</flag>
+		<flag>HasGatherPoint</flag>
+		<flag>InitialGarrisonOnly</flag>
+		<command row="3" column="0">SetGatherPoint</command>
+		<command row="3" column="1">Eject</command>
+		<command row="3" column="5">Delete</command>
+		<command row="1" column="1">CancelBuilding</command>
+		<tactics>dock.tactics</tactics>
+	</unit>
+	<unit name="CoastalSentryTower">
+		<displaynameid>STR_BLD_COASTAL_SENTRY_TOWER_NAME</displaynameid>
+		<rollovertextid>STR_BLD_COASTAL_SENTRY_TOWER_LR</rollovertextid>
+		<shortrollovertextid>STR_BLD_COASTAL_SENTRY_TOWER_SR</shortrollovertextid>
+		<icon>resources\shared\static_color\buildings\sentry_tower_icon.png</icon>
+		<animfile culture="greek">greek\buildings\tower\tower.xml</animfile>
+		<animfile culture="egyptian">egyptian\buildings\tower\tower.xml</animfile>
+		<animfile culture="norse">norse\buildings\tower\tower.xml</animfile>
+		<animfile culture="atlantean">atlantean\buildings\tower\tower.xml</animfile>
+		<animfile culture="chinese">chinese\buildings\tower\tower.xml</animfile>
+		<soundsetfile>shared\sfx\buildings\sentry_tower.xml</soundsetfile>
+		<placementfile>coastal_tower.xml</placementfile>
+		<obstructionradiusx>1.0000</obstructionradiusx>
+		<obstructionradiusz>1.0000</obstructionradiusz>
+		<impacttype>Wood</impacttype>
+		<screenshakeondestruction>0.400</screenshakeondestruction>
+		<unitaitype>RangedCombative</unitaitype>
+		<movementtype>water</movementtype>
+		<initialhitpoints>750.0000</initialhitpoints>
+		<maxhitpoints>750.0000</maxhitpoints>
+		<buildpoints>50.0000</buildpoints>
+		
+		<buildlimit>6</buildlimit>
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype>AbstractCoastalTower</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<flag>TieToWaterSurface</flag>
+		<unittype>AbstractCoastalTower</unittype>
+		
+		<los>24.0000</los>
+		<cost resourcetype="Wood">150.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.8500"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeAffectedByCeaseFireBuildingSlow</unittype>
+		<unittype>Building</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>MilitaryBuilding</unittype>
+		<unittype>AbstractTower</unittype>
+		<!-- No AbstractTowerBuildLimit -->
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeTartarianGateValidOverlapPlacement</unittype>
+		<unittype>LogicalTypeBuildingThatCanBeEmpowered</unittype>
+		<unittype>LogicalTypeBuildingNotWonderOrTitan</unittype>
+		<unittype>LogicalTypeBuildingSmall</unittype>
+		<unittype>LogicalTypeValidForestProtectionPlacement</unittype>
+		<hotkeycontext>TowerAccel</hotkeycontext>
+		<tech row="0" column="0">SignalFires</tech>
+		<tech row="0" column="0">CarrierPigeons</tech>
+		<tech row="0" column="1">WatchTower</tech>
+		<tech row="0" column="1">GuardTower</tech>
+		<tech row="0" column="2">Crenellations</tech>
+		<tech row="0" column="3">BoilingOil</tech>
+		<tech row="0" column="1">BallistaTower</tech>
+		<tech row="0" column="1">CrossbowTower</tech>
+		<tech row="0" column="1">MirrorTower</tech>
+		<tech row="1" column="0">AdvancedDefenses</tech>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>PaintTextureWhenPlacing</flag>
+		<flag>FlattenGround</flag>
+		<flag>HasGatherPoint</flag>
+		<flag>DisplayRange</flag>
+		<flag>DisplayMinimumRange</flag>
+		<flag>CreateUnitGroupAutomatically</flag>
+		<flag>UnitTransformFree</flag>
+		<flag>UnitTransformBuildLimit</flag>
+		<command row="1" column="1">CancelBuilding</command>
+		<command row="3" column="0">SetGatherPoint</command>
+		<command row="3" column="1">Eject</command>
+		<command row="3" column="2">EjectBackToWork</command>
+		<command row="3" column="5">Delete</command>
+		<tactics>sentry_tower.tactics</tactics>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.000000</rof>
+			<damage type="Pierce">5.000000</damage>
+			<damagebonus type="Ship">3.000000</damagebonus>
+			<damagebonus type="AbstractCloseCombatShip">2.000000</damagebonus>
+			<minrange>4.000000</minrange>
+			<maxrange>18.000000</maxrange>
+			<active>0</active>
+			<projectile>ProjectileArrow</projectile>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<autoretarget>1</autoretarget>
+			<canattackground>1</canattackground>
+		</protoaction>
+		<protoaction>
+			<name>FlyingUnitAttack</name>
+			<rof>1.000000</rof>
+			<damage type="Pierce">5.000000</damage>
+			<damagebonus type="Ship">3.000000</damagebonus>
+			<damagebonus type="AbstractCloseCombatShip">2.000000</damagebonus>
+			<maxrange>18.000000</maxrange>
+			<active>0</active>
+			<projectile>ProjectileArrow</projectile>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<autoretarget>1</autoretarget>
+			<canattackground>1</canattackground>
+		</protoaction>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.000000</rof>
+			<damage type="Pierce">10.000000</damage>
+			<damagebonus type="Ship">3.000000</damagebonus>
+			<damagebonus type="AbstractCloseCombatShip">2.000000</damagebonus>
+			<maxrange>4.000000</maxrange>
+			<active>0</active>
+			<impacteffect>effects\impacts\pierce</impacteffect>
+		</protoaction>
+	</unit>
+	<unit name="CoastalMirrorTower">
+		<displaynameid>STR_BLD_COASTAL_MIRROR_TOWER_NAME</displaynameid>
+		<rollovertextid>STR_BLD_COASTAL_MIRROR_TOWER_LR</rollovertextid>
+		<shortrollovertextid>STR_BLD_COASTAL_MIRROR_TOWER_SR</shortrollovertextid>
+		<icon>resources\atlantean\static_color\buildings\mirror_tower_icon.png</icon>
+		<animfile>atlantean\buildings\mirror_tower\mirror_tower.xml</animfile>
+		<soundsetfile>atlantean\sfx\buildings\mirror_tower.xml</soundsetfile>
+		<placementfile>coastal_tower.xml</placementfile>
+		<obstructionradiusx>1.0000</obstructionradiusx>
+		<obstructionradiusz>1.0000</obstructionradiusz>
+		<impacttype>Stone</impacttype>
+		<unitaitype>RangedCombative</unitaitype>
+		<initialhitpoints>750.0000</initialhitpoints>
+		<maxhitpoints>750.0000</maxhitpoints>
+		<buildpoints>50.0000</buildpoints>
+		
+		<movementtype>water</movementtype>
+		<buildlimit>6</buildlimit>
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype>AbstractCoastalTower</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		<flag>TieToWaterSurface</flag>
+		<unittype>AbstractCoastalTower</unittype>
+		
+		<los>30.0000</los>
+		<cost resourcetype="Wood">75.0000</cost>
+		<cost resourcetype="Gold">50.0000</cost>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.8500"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>Building</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>MilitaryBuilding</unittype>
+		<unittype>AbstractTower</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>LogicalTypeAffectedByCeaseFireBuildingSlow</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeTartarianGateValidOverlapPlacement</unittype>
+		<unittype>LogicalTypeBuildingThatCanBeEmpowered</unittype>
+		<unittype>LogicalTypeBuildingsThatShoot</unittype>
+		<unittype>LogicalTypeBuildingSmall</unittype>
+		<unittype>LogicalTypeBuildingNotWonderOrTitan</unittype>
+		<unittype>LogicalTypeValidForestProtectionPlacement</unittype>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>PaintTextureWhenPlacing</flag>
+		<flag>HasGatherPoint</flag>
+		<flag>DisplayRange</flag>
+		<flag>CreateUnitGroupAutomatically</flag>
+		<!-- Cannot contain units -->
+		<command row="1" column="1">CancelBuilding</command>
+		<command row="3" column="0">SetGatherPoint</command>
+		<command row="3" column="1">Eject</command>
+		<command row="3" column="2">EjectBackToWork</command>
+		<command row="3" column="4">ReturnToWork</command>
+		<command row="3" column="5">Delete</command>
+		<tactics>chainattack_beam.tactics</tactics>
+		<protoaction>
+			<name>BeamAttack</name>
+			<rof>3.000000</rof>
+			<damage type="Pierce">39.000000</damage>
+			<damage type="Divine">6.000000</damage>
+			<damagebonus type="Ship">3.000000</damagebonus>
+			<damagebonus type="AbstractCloseCombatShip">2.000000</damagebonus>
+			<maxrange>20.000000</maxrange>
+			<projectile>ProjectileMirrorTowerLazer</projectile>
+		</protoaction>
+	</unit>
+	<unit name="Aquafarm">
+		<displaynameid>STR_BLD_AQUAFARM_NAME</displaynameid>
+		<rollovertextid>STR_BLD_AQUAFARM_LR</rollovertextid>
+		<shortrollovertextid>STR_BLD_AQUAFARM_SR</shortrollovertextid>
+		<editornameid>STR_BLD_AQUAFARM_EDT_NAME</editornameid>
+		<icon>resources\nature\animals\naval\fish_icon.png</icon>
+		<animfile culture="greek">nature\animals\naval\fish\perch\aquafarm_perch.xml</animfile>
+		<animfile culture="egyptian">nature\animals\naval\fish\mahi\aquafarm_mahi.xml</animfile>
+		<animfile culture="norse">nature\animals\naval\fish\herring\aquafarm_herring.xml</animfile>
+		<animfile culture="atlantean">nature\animals\naval\fish\salmon\aquafarm_salmon.xml</animfile>
+		<animfile culture="chinese">nature\animals\naval\fish\mahi\aquafarm_mahi.xml</animfile>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<obstructionradiusx>3.0000</obstructionradiusx>
+		<obstructionradiusz>3.0000</obstructionradiusz>
+		<selectionradiusx>2.5000</selectionradiusx>
+		<selectionradiusz>2.5000</selectionradiusz>
+		<initialhitpoints>200.0000</initialhitpoints>
+		<maxhitpoints>200.0000</maxhitpoints>
+		<buildpoints>10.0000</buildpoints>
+		<movementtype>water</movementtype>
+		<gathererlimit>1</gathererlimit>
+		<los>6.0000</los>
+		<cost resourcetype="Gold">60.0000</cost>
+		<initialresource resourcetype="Food">9999.0000</initialresource>
+		<carrycapacity resourcetype="Food">9999.0000</carrycapacity>
+		<resourcesubtype>fish</resourcesubtype>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.8000"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>
+		<unittype>LogicalTypeVillagersRespondToAttack</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>Building</unittype>
+		<unittype>Resource</unittype>
+		<unittype>AbstractAquafarm</unittype>
+		<farmingradiusx>2.5000</farmingradiusx>
+		<farmingradiusz>2.5000</farmingradiusz>
+		<farmingobstructionradiusx>0.5000</farmingobstructionradiusx>
+		<farmingobstructionradiusz>0.5000</farmingobstructionradiusz>
+		<unittype>LogicalTypeBuildingSmall</unittype>
+		<flag>DontRotateObstruction</flag>
+		<flag>DoNotValidateResourceInventory</flag>
+		<flag>TieToWaterSurface</flag>
+		<flag>DecalStickToWaterSurface</flag>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>UnlimitedSupply</flag>
+		<flag>FadeInOnBuild</flag>
+		<flag>Doppled</flag>
+		<flag>NonSolid</flag>
+		<flag>NoIdleActions</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>ObscuredByUnits</flag>
+		<command row="0" column="0">FishingBoatToGather</command>
+		<command row="0" column="1">MoveNearbyTransportShipToUnit</command>
+		<command row="0" column="2">MoveNearbyPriestToUnit</command>
+		<command row="0" column="3">ResourceUnitConstructDock</command>
+		<command row="0" column="4">MoveNearbyHeroToUnit</command>
+		<command row="0" column="5">MoveNearbyMilitaryToUnit</command>
+		<command row="1" column="0">MoveNearbySiegeToUnit</command>
+		<command row="1" column="1">MoveNearbyNavyToUnit</command>
+	</unit>
+	<unit name="SignalTorch">
+		<displaynameid>STR_BLD_TORCH_NAME</displaynameid>
+		<rollovertextid>STR_BLD_TORCH_LR</rollovertextid>
+		<shortrollovertextid>STR_BLD_TORCH_SR</shortrollovertextid>
+		<icon>resources\spc\static_color\buildings\torch_icon.png</icon>
+		<animfile culture="greek">greek\buildings\signal_torch\signal_torch.xml</animfile>
+		<animfile culture="egyptian">egyptian\buildings\signal_torch\signal_torch.xml</animfile>
+		<animfile culture="norse">norse\buildings\signal_torch\signal_torch.xml</animfile>
+		<animfile culture="atlantean">atlantean\buildings\signal_torch\signal_torch.xml</animfile>
+		<animfile culture="chinese">chinese\buildings\signal_torch\signal_torch.xml</animfile>
+		<soundsetfile>shared\sfx\exists\fire_exists.xml</soundsetfile>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<obstructionradiusx>1.0000</obstructionradiusx>
+		<obstructionradiusz>1.0000</obstructionradiusz>
+		<placementfile>signal_torch.xml</placementfile>
+		<builderlimit>2</builderlimit>
+		<impacttype>Wood</impacttype>
+		<movementtype>land</movementtype>
+		<initialhitpoints>20.0000</initialhitpoints>
+		<maxhitpoints>20.0000</maxhitpoints>
+		<buildpoints>10.0000</buildpoints>
+		<los>12.0000</los>
+		<cost resourcetype="Wood">10.0000</cost>
+		<armor type="Hack" value="0.0500"></armor>
+		<armor type="Pierce" value="0.9000"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>Building</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeBuildingEmpoweredForLOS</unittype>
+		<unittype>LogicalTypeTartarianGateValidOverlapPlacement</unittype>
+		<unittype>LogicalTypeValidForestProtectionPlacement</unittype>
+		<unittype>LogicalTypeBuildingNotWonderOrTitan</unittype>
+		<hotkeycontext>ObeliskAccel</hotkeycontext>
+		<tech row="0" column="0">SignalFires</tech>
+		<tech row="0" column="0">CarrierPigeons</tech>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>NoIdleActions</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>PaintTextureWhenPlacing</flag>
+		<flag>FlattenGround</flag>
+		<flag>DisplayRange</flag>
+		<flag>DynamicUpdate</flag>
+		<command row="0" column="0">MoveNearbyFishingBoatToBuild</command>
+		<command row="3" column="0">SetRallyPointOfNearbyEconUnitsToUnitPos</command>
+		<command row="3" column="1">SetRallyPointOfNearbyMilitaryUnitsToUnitPos</command>
+		<command row="1" column="1">CancelBuilding</command>
+		<command row="3" column="5">Delete</command>
+	</unit>
+	<unit name="NorseBonfire">
+		<displaynameid>STR_BLD_NORSE_BONFIRE_NAME</displaynameid>
+		<rollovertextid>STR_BLD_NORSE_BONFIRE_LR</rollovertextid>
+		<shortrollovertextid>STR_BLD_NORSE_BONFIRE_SR</shortrollovertextid>
+		<icon>resources\shared\static_color\technologies\signal_fires_icon.png</icon>
+		<animfile>chinese\buildings\props\bonfire\bonfire.xml</animfile>
+		<soundsetfile>shared\sfx\exists\fire_exists.xml</soundsetfile>
+		<obstructionradiusx>1.2500</obstructionradiusx>
+		<obstructionradiusz>1.2500</obstructionradiusz>
+		<placementfile>norse_bonfire.xml</placementfile>
+		<builderlimit>2</builderlimit>
+		<impacttype>Wood</impacttype>
+		<movementtype>land</movementtype>
+		<weightclass>255</weightclass>
+		<initialhitpoints>300.0000</initialhitpoints>
+		<maxhitpoints>300.0000</maxhitpoints>
+		<buildpoints>25.0000</buildpoints>
+		<los>14.0000</los>
+		<cost resourcetype="Wood">50.0000</cost>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.9000"></armor>
+		<armor type="Crush" value="0.0500"></armor>
+		<unittype>LogicalTypeMinimapFilterEconomic</unittype>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeBuildingsNotWalls</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>BuildingClass</unittype>
+		<unittype>Building</unittype>
+		<unittype>CountsTowardEconomicScore</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeBuildingEmpoweredForLOS</unittype>
+		<unittype>LogicalTypeTartarianGateValidOverlapPlacement</unittype>
+		<unittype>LogicalTypeValidForestProtectionPlacement</unittype>
+		<unittype>LogicalTypeBuildingNotWonderOrTitan</unittype>
+		<hotkeycontext>ObeliskAccel</hotkeycontext>
+		<tech row="0" column="0">SignalFires</tech>
+		<tech row="0" column="0">CarrierPigeons</tech>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>Immoveable</flag>
+		<flag>ObscuresUnits</flag>
+		<flag>NoIdleActions</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>Doppled</flag>
+		<flag>SelectWithObstruction</flag>
+		<flag>PaintTextureWhenPlacing</flag>
+		<flag>FlattenGround</flag>
+		<flag>DynamicUpdate</flag>
+		<command row="3" column="1">SetRallyPointOfNearbyMilitaryUnitsToUnitPos</command>
+		<command row="1" column="1">CancelBuilding</command>
+		<command row="3" column="5">Delete</command>
+		
+		<buildlimit>10.0000</buildlimit>
+		<flag>CanAutoHeal</flag>
+		<flag>DisplayRange</flag>
+		<flag>DisplayRangeOverride</flag>
+		<displayedrange>15</displayedrange>
+		<tactics>norse_bonfire.tactics</tactics>
+		<protoaction>
+			<name>AreaHeal</name>
+			<modifyamount>2.5</modifyamount>
+			<maxrange>15</maxrange>
+			<slowhealmultiplier>0.50</slowhealmultiplier>
+			<modifytargetlimit>3</modifytargetlimit>
+		</protoaction>
+	</unit>
+
+	<unit name="Trireme">   	<!-- Archer -->
+		<initialhitpoints>450.0000</initialhitpoints>
+		<maxhitpoints>450.0000</maxhitpoints>
+		<maxvelocity>6.5000</maxvelocity>
+		<maxcontained>5</maxcontained>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">120.0000</cost>
+		<cost resourcetype="Gold">40.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<armor type="Crush" value="0.1000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<contain>LogicalTypeGarrisonInShips</contain>
+		<notcontain>AbstractSiegeWeapon</notcontain>
+		<containedhitpointbonus>60.0000</containedhitpointbonus>
+		<containedspeedbonus>0.1</containedspeedbonus>
+		<protoaction>
+			<name>RangedAttack</name>
+			<containscalebasedamage>1</containscalebasedamage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.100000</rate>
+			</scalebycontainedunittype>
+			<damagefactorcap>1.5</damagefactorcap>
+		</protoaction>
+	</unit>
+	<unit name="Pentekonter">   <!-- Melee -->
+		<initialhitpoints>350.0000</initialhitpoints>
+		<maxhitpoints>350.0000</maxhitpoints>
+		<maxvelocity>5.5000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">50.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.3000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		<directionalarmor angle="0.7854" value="0.5000"></directionalarmor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">32.000000</damage>
+			<maxrange>2.000000</maxrange>
+			<impacteffect>effects\impacts\hack_medium</impacteffect>
+		</protoaction>
+		<protoaction>
+			<name>ChargedHandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">50.000000</damage> <!-- Trying to maintain good power strike -->
+			<maxrange>2.000000</maxrange>
+			<impacteffect>effects\impacts\hack_medium</impacteffect>
+		</protoaction>
+	</unit>
+	<unit name="Juggernaut">   	<!-- Siege -->
+		<initialhitpoints>500.0000</initialhitpoints>
+		<maxhitpoints>500.0000</maxhitpoints>
+		<maxvelocity>6.0000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">200.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.5000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<unittype>Transport</unittype>
+		<maxcontained>1</maxcontained>
+		<contain>AbstractSiegeWeapon</contain>
+		<flag>AllowAutoGarrison</flag>
+		<flag>ContainedLOS</flag>
+		
+		<!-- Doesn't work. Attacks with garrisoned unit deal 0 damage. -->
+		<!--
+		<tactics>siege_ship.tactics</tactics>
+		<protoaction>
+			<name>SiegeAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">6.000000</damage>
+			<damage type="Crush">4.000000</damage>
+			<maxrange>18.000000</maxrange>
+			<numberprojectiles>4</numberprojectiles>
+			<displayednumberprojectiles>4</displayednumberprojectiles>
+			<projectile>ProjectileBallistaShot</projectile>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+			<activeifcontainsunits>1</activeifcontainsunits>
+			<volleymode></volleymode>
+		</protoaction>
+		-->
+		
+		<protoaction mergeMode="replace">
+			<name>RangedAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">12.000000</damage>
+			<damage type="Crush">8.000000</damage>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileBallistaShot</projectile>
+			<numberprojectiles>2</numberprojectiles>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.200000</rate>
+			</scalebycontainedunittype>
+			<volleymode></volleymode>
+		</protoaction>
+	</unit>
+	<unit name="Scylla">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+
+		<protoaction>
+			<name>HandAttack</name>
+			<damage type="Hack">40.000000</damage>
+			<damage type="Crush">20.000000</damage>
+			<damagebonus mergeMode="Remove" type="MythUnit">2.000000</damagebonus>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<veterancybonus mergeMode="replace">
+			<rank id="0">
+				<veterancymodify modifytype="Damage">2.0000</veterancymodify>
+			</rank>
+			<rank id="1">
+				<veterancymodify modifytype="Damage">3.0000</veterancymodify>
+			</rank>
+			<rank id="2">
+				<veterancymodify modifytype="Damage">4.0000</veterancymodify>
+			</rank>
+			<rank id="3">
+				<veterancymodify modifytype="Damage">5.0000</veterancymodify>
+			</rank>
+			<includetypes>
+				<unittype>MilitaryUnit</unittype>
+				<unittype>EconomicUnit</unittype>
+			</includetypes>
+		</veterancybonus>
+	</unit>
+	<unit name="Carcinos">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>SelfDestructAttack</name>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="TheArgo">
+		<initialhitpoints>675.0000</initialhitpoints>
+		<maxhitpoints>675.0000</maxhitpoints>
+		<maxvelocity>7.0000</maxvelocity>
+		<maxcontained>0</maxcontained>
+		<cost resourcetype="Wood">200.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<cost resourcetype="Favor">4.0000</cost>
+		<armor type="Pierce" value="0.1000"></armor>
+		<armor type="Hack" value="0.5000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+	
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipGreek</unittype>
+			<unittype weight="1.0000">TransportShipGreek</unittype>
+			<unittype weight="3.0000">Trireme</unittype>
+			<unittype weight="3.0000">Pentekonter</unittype>
+			<unittype weight="4.0000">Juggernaut</unittype>
+			<unittype weight="4.0000">TheArgo</unittype>
+			<unittype weight="4.0000">Scylla</unittype>
+			<unittype weight="3.0000">Carcinos</unittype>
+		</sharedbuildlimitunittypes>
+		
+		<contain>LogicalTypeGarrisonInShips</contain>
+		<notcontain>AbstractSiegeWeapon</notcontain>
+		<containedhitpointbonus>90.0000</containedhitpointbonus>
+		<containedspeedbonus>0.1</containedspeedbonus>
+		<protoaction>
+			<name>RangedAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Pierce">10.000000</damage>
+			<damagebonus type="MythUnit">6.000000</damagebonus>
+			<containscalebasedamage>1</containscalebasedamage>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.100000</rate>
+			</scalebycontainedunittype>
+			<damagefactorcap>1.5</damagefactorcap>
+		</protoaction>
+	</unit>
+	
+	<unit name="Kebenit">
+		<initialhitpoints>450.0000</initialhitpoints>
+		<maxhitpoints>450.0000</maxhitpoints>
+		<maxvelocity>6.5000</maxvelocity>
+		<maxcontained>5</maxcontained>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">108.0000</cost>
+		<cost resourcetype="Gold">36.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<armor type="Crush" value="0.1000"></armor>
+	
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<contain>LogicalTypeGarrisonInShips</contain>
+		<notcontain>AbstractSiegeWeapon</notcontain>
+		<containedhitpointbonus>60.0000</containedhitpointbonus>
+		<containedspeedbonus>0.1</containedspeedbonus>
+		<protoaction>
+			<name>RangedAttack</name>
+			<containscalebasedamage>1</containscalebasedamage>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.100000</rate>
+			</scalebycontainedunittype>
+			<damagefactorcap>1.5</damagefactorcap>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="RammingGalley">		
+		<initialhitpoints>350.0000</initialhitpoints>
+		<maxhitpoints>350.0000</maxhitpoints>
+		<maxvelocity>5.5000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">90.0000</cost>
+		<cost resourcetype="Gold">45.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.3000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		<directionalarmor angle="0.7854" value="0.5000"></directionalarmor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+				
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">32.000000</damage>
+			<maxrange>2.000000</maxrange>
+			<impacteffect>effects\impacts\hack_medium</impacteffect>
+		</protoaction>
+	</unit>
+	<unit name="WarBarge">
+		<initialhitpoints>500.0000</initialhitpoints>
+		<maxhitpoints>500.0000</maxhitpoints>
+		<maxvelocity>6.0000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">180.0000</cost>
+		<cost resourcetype="Gold">90.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.5000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<unittype>Transport</unittype>
+		<maxcontained>1</maxcontained>
+		<contain>AbstractSiegeWeapon</contain>
+		<flag>AllowAutoGarrison</flag>
+		<flag>ContainedLOS</flag>
+		
+		<protoaction mergeMode="replace">
+			<name>RangedAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">12.000000</damage>
+			<damage type="Crush">8.000000</damage>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileBallistaShot</projectile>
+			<numberprojectiles>2</numberprojectiles>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.200000</rate>
+			</scalebycontainedunittype>
+			<volleymode></volleymode>
+		</protoaction>
+	</unit>
+	<unit name="SeaSnakeScout">
+		<displaynameid>STR_UNIT_SEA_SNAKE_SCOUT_NAME</displaynameid>
+		<rollovertextid>STR_UNIT_SEA_SNAKE_SCOUT_LR</rollovertextid>
+		<shortrollovertextid>STR_UNIT_SEA_SNAKE_SCOUT_SR</shortrollovertextid>
+		<icon>resources\egyptian\player_color\units\sea_snake_icon.png</icon>
+		<animfile>egyptian\units\myth\sea_snake\sea_snake.xml</animfile>
+		<soundsetfile>egyptian\vo\sea_snake\sea_snake.xml</soundsetfile>
+		<obstructionradiusx>0.7400</obstructionradiusx>
+		<obstructionradiusz>0.7400</obstructionradiusz>
+		<selectionradiusx>0.7500</selectionradiusx>
+		<selectionradiusz>2.0000</selectionradiusz>
+		<impacttype>Unarmoured</impacttype>
+		<unitaitype>HandCombative</unitaitype>
+		<movementtype>water</movementtype>
+		<turnrate>9.0000</turnrate>
+		<initialhitpoints>100.0000</initialhitpoints>
+		<maxhitpoints>100.0000</maxhitpoints>
+		<trainpoints>10.0000</trainpoints>
+		<weightclass>0</weightclass>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<maxvelocity>5.5000</maxvelocity>
+		<los>18.0000</los>
+		<cost resourcetype="Food">50.0000</cost>
+		<cost resourcetype="Favor">2.0000</cost>
+		<armor type="Hack" value="0.5000"></armor>
+		<armor type="Pierce" value="0.5000"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		<culture>Egyptian</culture>
+		<unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+		<unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+		<unittype>LogicalTypeVillagersAttack</unittype>
+		<unittype>LogicalTypeHandUnitsAttack</unittype>
+		<unittype>LogicalTypeRangedUnitsAttack</unittype>
+		<unittype>LogicalTypeMinimapFilterMilitary</unittype>
+		<unittype>MythUnit</unittype>
+		<unittype>Unit</unittype>
+		<unittype>UnitClass</unittype>
+		<unittype>MilitaryUnit</unittype>
+		<unittype>AbstractScout</unittype>
+		<unittype>NavalUnit</unittype>
+		<unittype>CountsTowardMilitaryScore</unittype>
+		<unittype>LogicalTypeEasySelectAvoid</unittype>
+		<unittype>LogicalTypeValidBoltTarget</unittype>
+		<unittype>LogicalTypeConvertsHerds</unittype>
+		<unittype>LogicalTypeEarthquakeAttack</unittype>
+		<unittype>LogicalTypeAffectedByRestoration</unittype>
+		<unittype>LogicalTypeValidMeteorTarget</unittype>
+		<unittype>LogicalTypeValidTornadoAttack</unittype>
+		<unittype>LogicalTypeValidSpyTarget</unittype>
+		<unittype>LogicalTypeValidFrostTarget</unittype>
+		<unittype>LogicalTypeValidTraitorTarget</unittype>
+		<unittype>LogicalTypeHealed</unittype>
+		<unittype>LogicalTypeValidShockwaveTarget</unittype>
+		<unittype>LogicalTypeFreezableMythUnit</unittype>
+		<unittype>LogicalTypeNavalMilitary</unittype>
+		<unittype>LogicalTypeMythUnitNotFlying</unittype>
+		<flag>TieToWaterSurface</flag>
+		<flag>CollidesWithProjectiles</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>DecalStickToWaterSurface</flag>
+		<flag>FadeOutDecalOnDeath</flag>
+		<flag>ObscuredByUnits</flag>
+		<flag>ExcludeFromIdleQuery</flag>
+		<flag>ExcludeFromMoveAllMilitary</flag>
+		<flag>CreateUnitGroupAutomatically</flag>
+		<flag>GroupSelection</flag>
+		<flag>CommonCommands</flag>
+		<flag>MilitaryCommands</flag>
+		<tactics>serpent.tactics</tactics>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">9.000000</damage>
+			<maxrange>3.000000</maxrange>
+		</protoaction>
+	</unit>
+	<unit name="Leviathan">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="WarTurtle">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipEgyptian</unittype>
+			<unittype weight="1.0000">TransportShipEgyptian</unittype>
+			<unittype weight="3.0000">Kebenit</unittype>
+			<unittype weight="3.0000">RammingGalley</unittype>
+			<unittype weight="4.0000">WarBarge</unittype>
+			<unittype weight="2.0000">SeaSnakeScout</unittype>
+			<unittype weight="3.0000">Leviathan</unittype>
+			<unittype weight="4.0000">WarTurtle</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>BuckAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+
+	<unit name="Longboat">		
+		<initialhitpoints>450.0000</initialhitpoints>
+		<maxhitpoints>450.0000</maxhitpoints>
+		<maxvelocity>6.5000</maxvelocity>
+		<maxcontained>5</maxcontained>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">120.0000</cost>
+		<cost resourcetype="Gold">40.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<armor type="Crush" value="0.1000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="4.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<contain>LogicalTypeGarrisonInShips</contain>
+		<notcontain>AbstractSiegeWeapon</notcontain>
+		<containedhitpointbonus>60.0000</containedhitpointbonus>
+		<containedspeedbonus>0.1</containedspeedbonus>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage type="Pierce">9.000000</damage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<containscalebasedamage>1</containscalebasedamage>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.100000</rate>
+			</scalebycontainedunittype>
+			<damagefactorcap>1.5</damagefactorcap>
+		</protoaction>
+		
+		<train row="0" column="0">NorseBonfire</train>
+		<train row="255" column="255">House</train>
+		<train row="255" column="255">Temple</train>
+		<train row="255" column="255">Dock</train>
+		<train row="255" column="255">Longhouse</train>
+		<train row="255" column="255">GreatHall</train>
+		<train row="255" column="255">Market</train>
+		<train row="255" column="255">Armory</train>
+		<train row="255" column="255">DwarvenArmory</train>
+		<train row="255" column="0">TownCenter</train>
+		<train row="255" column="0">VillageCenter</train>
+		<train row="255" column="255">WallConnector</train>
+		<train row="255" column="255">WallShort</train>
+		<train row="255" column="255">WallMedium</train>
+		<train row="255" column="255">WallLong</train>
+		<train row="255" column="255">SentryTower</train>
+		<train row="255" column="255">HillFort</train>
+		<train row="255" column="255">Wonder</train>
+		<hotkeycontext>BuildWarshipNorseAccel</hotkeycontext>
+		<protoaction>
+			<name>Build</name>
+			<type>Build</type>
+			<maxrange>2.0</maxrange>
+			<anim>Idle</anim>
+			<rate type="Building">1.000000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+			<typedmaxrange type="NorseBonfire">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="Dreki">
+		<initialhitpoints>350.0000</initialhitpoints>
+		<maxhitpoints>350.0000</maxhitpoints>
+		<maxvelocity>5.5000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">50.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.3000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		<directionalarmor angle="0.7854" value="0.5000"></directionalarmor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="4.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+				
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">33.000000</damage>
+			<maxrange>2.000000</maxrange>
+			<impacteffect>effects\impacts\hack_medium</impacteffect>
+		</protoaction>
+		
+		<train row="0" column="0">NorseBonfire</train>
+		<train row="255" column="255">House</train>
+		<train row="255" column="255">Temple</train>
+		<train row="255" column="255">Dock</train>
+		<train row="255" column="255">Longhouse</train>
+		<train row="255" column="255">GreatHall</train>
+		<train row="255" column="255">Market</train>
+		<train row="255" column="255">Armory</train>
+		<train row="255" column="255">DwarvenArmory</train>
+		<train row="255" column="0">TownCenter</train>
+		<train row="255" column="0">VillageCenter</train>
+		<train row="255" column="255">WallConnector</train>
+		<train row="255" column="255">WallShort</train>
+		<train row="255" column="255">WallMedium</train>
+		<train row="255" column="255">WallLong</train>
+		<train row="255" column="255">SentryTower</train>
+		<train row="255" column="255">HillFort</train>
+		<train row="255" column="255">Wonder</train>
+		<hotkeycontext>BuildWarshipNorseAccel</hotkeycontext>
+		<protoaction>
+			<name>Build</name>
+			<type>Build</type>
+			<maxrange>2.0</maxrange>
+			<anim>Idle</anim>
+			<rate type="Building">1.000000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+			<typedmaxrange type="NorseBonfire">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="DragonShip">
+		<initialhitpoints>500.0000</initialhitpoints>
+		<maxhitpoints>500.0000</maxhitpoints>
+		<maxvelocity>6.0000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">200.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.5000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="4.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+				
+		<unittype>Transport</unittype>
+		<maxcontained>1</maxcontained>
+		<contain>AbstractSiegeWeapon</contain>
+		<flag>AllowAutoGarrison</flag>
+		<flag>ContainedLOS</flag>
+		
+		<protoaction mergeMode="replace">
+			<name>RangedAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">13.000000</damage>
+			<damage type="Crush">9.000000</damage>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileBallistaShot</projectile>
+			<numberprojectiles>2</numberprojectiles>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.200000</rate>
+			</scalebycontainedunittype>
+			<volleymode></volleymode>
+		</protoaction>
+		
+		<train row="0" column="0">NorseBonfire</train>
+		<train row="255" column="255">House</train>
+		<train row="255" column="255">Temple</train>
+		<train row="255" column="255">Dock</train>
+		<train row="255" column="255">Longhouse</train>
+		<train row="255" column="255">GreatHall</train>
+		<train row="255" column="255">Market</train>
+		<train row="255" column="255">Armory</train>
+		<train row="255" column="255">DwarvenArmory</train>
+		<train row="255" column="0">TownCenter</train>
+		<train row="255" column="0">VillageCenter</train>
+		<train row="255" column="255">WallConnector</train>
+		<train row="255" column="255">WallShort</train>
+		<train row="255" column="255">WallMedium</train>
+		<train row="255" column="255">WallLong</train>
+		<train row="255" column="255">SentryTower</train>
+		<train row="255" column="255">HillFort</train>
+		<train row="255" column="255">Wonder</train>
+		<hotkeycontext>BuildWarshipNorseAccel</hotkeycontext>
+		<protoaction>
+			<name>Build</name>
+			<type>Build</type>
+			<maxrange>2.0</maxrange>
+			<anim>Idle</anim>
+			<rate type="Building">1.000000</rate>
+			<typedmaxrange type="SignalTorch">5.0</typedmaxrange>
+			<typedmaxrange type="NorseBonfire">5.0</typedmaxrange>
+		</protoaction>
+	</unit>
+	<unit name="Kraken">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="4.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>Throw</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>Capsize</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="JormunElver">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipNorse</unittype>
+			<unittype weight="1.0000">TransportShipNorse</unittype>
+			<unittype weight="3.0000">Longboat</unittype>
+			<unittype weight="3.0000">Dreki</unittype>
+			<unittype weight="4.0000">DragonShip</unittype>
+			<unittype weight="4.0000">Kraken</unittype>
+			<unittype weight="4.0000">JormunElver</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>RangedAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>ChargedHandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+
+	<unit name="Bireme">
+		<initialhitpoints>450.0000</initialhitpoints>
+		<maxhitpoints>450.0000</maxhitpoints>
+		<maxvelocity>6.5000</maxvelocity>
+		<maxcontained>5</maxcontained>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">120.0000</cost>
+		<cost resourcetype="Gold">40.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<armor type="Crush" value="0.1000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<contain>LogicalTypeGarrisonInShips</contain>
+		<notcontain>AbstractSiegeWeapon</notcontain>
+		<containedhitpointbonus>60.0000</containedhitpointbonus>
+		<containedspeedbonus>0.1</containedspeedbonus>
+		<protoaction>
+			<name>RangedAttack</name>
+			<containscalebasedamage>1</containscalebasedamage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.100000</rate>
+			</scalebycontainedunittype>
+			<damagefactorcap>1.5</damagefactorcap>
+		</protoaction>
+	</unit>
+	<unit name="FireShip">		
+		<initialhitpoints>350.0000</initialhitpoints>
+		<maxhitpoints>350.0000</maxhitpoints>
+		<maxvelocity>5.5000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">50.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.3000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		<directionalarmor angle="0.7854" value="0.5000"></directionalarmor>
+	
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<tactics>siege_bireme.tactics</tactics>
+		<protoaction>
+			<name>RangedAttack</name>
+			<damage type="Hack">26.000000</damage>
+			<maxrange>6.000000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>FlameAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">26.000000</damage>
+			<damageflags>Nature|Enemy</damageflags>
+			<maxrange>6.000000</maxrange>
+			<projectile>ProjectileFireGiantSpecialAttack</projectile>
+			<impacteffect>effects\impacts\fireball</impacteffect>
+			<trackrating>99.0</trackrating>
+		</protoaction>
+	</unit>
+	<unit name="SiegeBireme">
+		<initialhitpoints>500.0000</initialhitpoints>
+		<maxhitpoints>500.0000</maxhitpoints>
+		<maxvelocity>6.0000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">200.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.5000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+				
+		<unittype>Transport</unittype>
+		<maxcontained>1</maxcontained>
+		<contain>AbstractSiegeWeapon</contain>
+		<flag>AllowAutoGarrison</flag>
+		<flag>ContainedLOS</flag>
+		
+		<protoaction mergeMode="replace">
+			<name>RangedAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">12.000000</damage>
+			<damage type="Crush">8.000000</damage>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileBallistaShot</projectile>
+			<numberprojectiles>2</numberprojectiles>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.200000</rate>
+			</scalebycontainedunittype>
+			<volleymode></volleymode>
+		</protoaction>
+		<protoaction>
+			<name>FlameAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">6.000000</damage>
+			<damage type="Crush">4.000000</damage>
+			<damageflags>Nature|Enemy</damageflags>
+			<damagebonus mergeMode="remove" type="AbstractArcherShip">2.000000</damagebonus>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileFireGiantSpecialAttack</projectile>
+			<numberprojectiles>4</numberprojectiles>
+			<impacteffect>effects\impacts\fireball</impacteffect>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.200000</rate>
+			</scalebycontainedunittype>
+		</protoaction>
+	</unit>
+	<unit name="Nereid">
+		<maxvelocity>5.5000</maxvelocity>
+		<rechargetime>10.0000</rechargetime>
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="MythUnit">3.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>ChargedHandAttack</name>
+			<rof>3.000000</rof>
+			<damage type="Hack">150.00000</damage>
+			<damagebonus type="MythUnit">6.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<maxrange>1.000000</maxrange>
+		</protoaction>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>ChargedHandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Servant">
+		<flag>AmphibiousBirth</flag>
+		<movementtype>amphibious</movementtype>
+		<maxvelocity>6.0000</maxvelocity>
+		<cost resourcetype="Gold">100.0000</cost>
+		<cost resourcetype="Food">50.0000</cost>
+		<cost resourcetype="Favor">8.0000</cost>
+		
+		<populationcount>1</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<tactics>servant.tactics</tactics>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.000000</rof>
+			<damage type="Hack">8.000000</damage>
+			<damage type="Crush">4.000000</damage>
+			<damagebonus type="MythUnit">3.000000</damagebonus>
+			<damagebonus type="Ship">2.000000</damagebonus>
+			<damagebonus type="Hero">0.500000</damagebonus>
+			<maxrange>0.500000</maxrange>
+		</protoaction>
+		<!-- AutoLOS is superfluous. Add back action to servant.tactics if desired.
+		<protoaction>
+			<name>AutoLOS</name>
+			<modifyamount>3.500000</modifyamount>
+			<modifyratecap>14.000000</modifyratecap>
+			<modifydecay>1.000000</modifydecay>
+			<modifytype>LOS</modifytype>
+		</protoaction>-->
+		<protoaction>
+			<name>ChargedModify</name>
+			<type>ChargedModify</type>
+			<persistent>1</persistent>
+			<charged>
+				<activationtype>TerrainType</activationtype>
+				<terraintype>Water</terraintype>
+				<duration>1.0</duration>
+				<cooldown>0.01</cooldown>
+			</charged>
+			<charged>
+				<chargedmodify modifytype="Speed" applytype="Multiply">0.80000</chargedmodify>
+				<activationtype>TerrainType</activationtype>
+				<terraintype>Land</terraintype>
+				<duration>1.0</duration>
+				<cooldown>0.01</cooldown>
+			</charged>
+		</protoaction>
+	</unit>
+	<unit name="ManOWar">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipAtlantean</unittype>
+			<unittype weight="1.0000">TransportShipAtlantean</unittype>
+			<unittype weight="3.0000">Bireme</unittype>
+			<unittype weight="3.0000">FireShip</unittype>
+			<unittype weight="4.0000">SiegeBireme</unittype>
+			<unittype weight="1.0000">Servant</unittype>
+			<unittype weight="2.0000">Nereid</unittype>
+			<unittype weight="4.0000">ManOWar</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>LightningAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+
+	<unit name="Doujian">   <!-- Archer -->
+		<initialhitpoints>450.0000</initialhitpoints>
+		<maxhitpoints>450.0000</maxhitpoints>
+		<maxvelocity>6.5000</maxvelocity>
+		<maxcontained>5</maxcontained>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">120.0000</cost>
+		<cost resourcetype="Gold">40.0000</cost>
+		<armor type="Hack" value="0.2500"></armor>
+		<armor type="Pierce" value="0.4000"></armor>
+		<armor type="Crush" value="0.1000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype> 
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<contain>LogicalTypeGarrisonInShips</contain>
+		<notcontain>AbstractSiegeWeapon</notcontain>
+		<containedhitpointbonus>60.0000</containedhitpointbonus>
+		<containedspeedbonus>0.1</containedspeedbonus>
+		<protoaction>
+			<name>RangedAttack</name>
+			<containscalebasedamage>1</containscalebasedamage>
+			<damagebonus type="MythUnit">2.000000</damagebonus>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.100000</rate>
+			</scalebycontainedunittype>
+			<damagefactorcap>1.5</damagefactorcap>
+		</protoaction>
+	</unit>
+	<unit name="Mengchong"> <!-- Melee -->
+		<initialhitpoints>350.0000</initialhitpoints>
+		<maxhitpoints>350.0000</maxhitpoints>
+		<maxvelocity>5.5000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">100.0000</cost>
+		<cost resourcetype="Gold">50.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.3000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		<directionalarmor angle="0.7854" value="0.5000"></directionalarmor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype> 
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+				
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.500000</rof>
+			<damage type="Hack">32.000000</damage>
+			<maxrange>2.000000</maxrange>
+			<impacteffect>effects\impacts\hack_medium</impacteffect>
+		</protoaction>
+	</unit>
+	<unit name="Louchuan">  <!-- Siege -->
+		<initialhitpoints>500.0000</initialhitpoints>
+		<maxhitpoints>500.0000</maxhitpoints>
+		<maxvelocity>6.0000</maxvelocity>
+		<los>16.0000</los>
+		<cost resourcetype="Wood">200.0000</cost>
+		<cost resourcetype="Gold">100.0000</cost>
+		<armor type="Hack" value="0.6000"></armor>
+		<armor type="Pierce" value="0.5000"></armor>
+		<armor type="Crush" value="0.2000"></armor>
+		
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype> 
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+				
+		<unittype>Transport</unittype>
+		<maxcontained>1</maxcontained>
+		<contain>AbstractSiegeWeapon</contain>
+		<flag>AllowAutoGarrison</flag>
+		<flag>ContainedLOS</flag>
+		
+		<protoaction mergeMode="replace">
+			<name>RangedAttack</name>
+			<rof>2.000000</rof>
+			<damage type="Pierce">12.000000</damage>
+			<damage type="Crush">8.000000</damage>
+			<maxrange>16.000000</maxrange>
+			<projectile>ProjectileBallistaShot</projectile>
+			<numberprojectiles>2</numberprojectiles>
+			<displayednumberprojectiles>2</displayednumberprojectiles>
+			<impacteffect>effects\impacts\crush_medium</impacteffect>
+			<scalebycontainedunittype>
+				<rate type="Unit">0.200000</rate>
+			</scalebycontainedunittype>
+			<volleymode></volleymode>
+		</protoaction>
+	</unit>
+	<unit name="Chiwen">
+		<populationcount>0</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype> 
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+	<unit name="Xuanwu">
+		<populationcount>2</populationcount>
+		<buildlimit>24.0000</buildlimit> <!-- Pop increase from Dock --> 
+		<flag>UseSharedBuildLimit</flag>
+		<sharedbuildlimitunittypes>
+			<unittype weight="1.0000">FishingShipChinese</unittype>
+			<unittype weight="1.0000">TransportShipChinese</unittype>
+			<unittype weight="3.0000">Doujian</unittype> 
+			<unittype weight="3.0000">Mengchong</unittype>
+			<unittype weight="4.0000">Louchuan</unittype>
+			<unittype weight="3.0000">Chiwen</unittype>
+			<unittype weight="2.0000">Xuanwu</unittype>
+		</sharedbuildlimitunittypes>
+		<dynamicbuildlimitunittypes>
+			<unittype>Dock</unittype>
+		</dynamicbuildlimitunittypes>
+		
+		<protoaction>
+			<name>HandAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+		<protoaction>
+			<name>ChargedRangedAttack</name>
+			<damagebonus type="Ship">2.000000</damagebonus>
+		</protoaction>
+	</unit>
+
+	<unit name="Salmon">
+		<!-- Doesn't seem to work.
+		<flag>Wanders</flag>
+		<wanderdistance>4</wanderdistance>
+		<maxvelocity>2.2000</maxvelocity>
+		<unittype>Unit</unittype>
+		<unittype>Huntable</unittype>
+		<tactics>animal_prey.tactics</tactics>
+		-->
+		<gathererlimit>5</gathererlimit>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<initialresource resourcetype="Food">500.0000</initialresource>
+		<flag mergeMode="Remove">UnlimitedSupply</flag>
+		<flag>DieAtZeroResources</flag>
+	</unit>
+	<unit name="Perch">
+		<gathererlimit>5</gathererlimit>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<initialresource resourcetype="Food">500.0000</initialresource>
+		<flag mergeMode="Remove">UnlimitedSupply</flag>
+		<flag>DieAtZeroResources</flag>
+	</unit>
+	<unit name="Mahi">
+		<gathererlimit>5</gathererlimit>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<initialresource resourcetype="Food">500.0000</initialresource>
+		<flag mergeMode="Remove">UnlimitedSupply</flag>
+		<flag>DieAtZeroResources</flag>
+	</unit>
+	<unit name="Herring">
+		<gathererlimit>5</gathererlimit>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<initialresource resourcetype="Food">500.0000</initialresource>
+		<flag mergeMode="Remove">UnlimitedSupply</flag>
+		<flag>DieAtZeroResources</flag>
+	</unit>
+
+	<!-- Effects -->
+	<unit name="PhobosSpearOfPanic">
+		<animfile>vfx\blood\bleed.xml</animfile>
+		<obstructionradiusx>0.4000</obstructionradiusx>
+		<obstructionradiusz>0.4000</obstructionradiusz>
+		<decay delay="0.0000" duration="0.1000"></decay>
+		<unitaitype>HandCombative</unitaitype>
+		<movementtype>air</movementtype>
+		<maxvelocity>40.0000</maxvelocity>
+		<flag>Invulnerable</flag>
+		<flag>NoIdleActions</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>NotSearchable</flag>
+		<flag>NoTieToGround</flag>
+		<flag>NonCollideable</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NotPlayerPlaceable</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+		<tactics>spear_of_panic.tactics</tactics>
+		<protoaction>
+			<name>Hysteria</name>
+			<maxrange>1.000000</maxrange>
+			<modifytype>ROF</modifytype>
+			<modifymultiplier>0.9</modifymultiplier>
+		</protoaction>
+	</unit>
+	
+	<unit name="BerserkDamageBoost">
+		<lifespan>8.0000</lifespan>
+	</unit>
+	
+	<unit name="ProjectileArrowFlamingCheiroballista">
+		<displaynameid>STR_UNIT_PROJECTILE_FLAMING_NAME</displaynameid>
+		<animfile>vfx\projectiles\arrow\arrow_flaming.xml</animfile>
+		<obstructionradiusx>0.2000</obstructionradiusx>
+		<obstructionradiusz>0.2000</obstructionradiusz>
+		<lifespan>2.0000</lifespan>
+		<decay delay="4.0000" duration="0.1000"></decay>
+		<movementtype>air</movementtype>
+		<maxvelocity>40.0000</maxvelocity>
+		<unittype>Projectile</unittype>
+		<unittype>LogicalTypeSunRayProjectile</unittype>
+		<unittype>LogicalTypeBlazingArrowsAreaProjectile</unittype>
+		<flag>NoIdleActions</flag>
+		<flag>NonCollideable</flag>
+		<flag>NotSearchable</flag>
+		<flag>Projectile</flag>
+		<flag>NoTieToGround</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>AdjustPositionOnTerrainCollision</flag>
+		<flag>NotPlayerPlaceable</flag>
+		<flag>HasContinuousParticles</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+	</unit>
+	<unit name="BlazingArrowsArea">
+		<animfile>vfx\fire\fire_small.xml</animfile>
+		<obstructionradiusx>0.4000</obstructionradiusx>
+		<obstructionradiusz>0.4000</obstructionradiusz>
+		<lifespan>6.0000</lifespan>
+		<movementtype>land</movementtype>
+		<decay delay="0.0000" duration="0.5000"></decay>
+		<unittype>Unit</unittype>
+		<flag>Invulnerable</flag>
+		<flag>NonCollideable</flag>
+		<flag>NotSearchable</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NoIdleActions</flag>
+		<flag>AreaDamageConstant</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+		<flag>BallisticTrackSource</flag>
+		<tactics>area_damage.tactics</tactics>
+		<protoaction>
+			<name>AreaDamage</name>
+			<modifyamount>-0.5</modifyamount>
+			<modifydamagetype>Divine</modifydamagetype>
+			<maxrange>2.0</maxrange>
+			<sendunderattackevent>1</sendunderattackevent>
+			<targetenemy>1</targetenemy>
+		</protoaction>
+	</unit>
+	<unit name="LingeringAutomatonArmorAura">
+		<obstructionradiusx>0.4000</obstructionradiusx>
+		<obstructionradiusz>0.4000</obstructionradiusz>
+		<lifespan>120.0000</lifespan>
+		<movementtype>land</movementtype>
+		<decay delay="0.0000" duration="0.5000"></decay>
+		<unittype>Unit</unittype>
+		<flag>Invulnerable</flag>
+		<flag>NonCollideable</flag>
+		<flag>NotSearchable</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NoIdleActions</flag>
+		<flag>AreaDamageConstant</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+		<flag>BallisticTrackSource</flag>
+		<tactics>automaton_armor_aura.tactics</tactics>
+		<protoaction>
+			<name>AutomatonArmorAura</name>
+			<maxrange>6.000000</maxrange>
+			<modifytype>Armor</modifytype>
+			<modifymultiplier>1.10</modifymultiplier>
+		</protoaction>
+	</unit>
+	<unit name="HaloOfTheSun">
+		<obstructionradiusx>0.4000</obstructionradiusx>
+		<obstructionradiusz>0.4000</obstructionradiusz>
+		<lifespan>4.0000</lifespan>
+		<movementtype>land</movementtype>
+		<decay delay="0.0000" duration="0.5000"></decay>
+		<unittype>Unit</unittype>
+		<flag>Invulnerable</flag>
+		<flag>NonCollideable</flag>
+		<flag>NotSearchable</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NoIdleActions</flag>
+		<flag>AreaDamageConstant</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+		<flag>BallisticTrackSource</flag>
+		<tactics>blazing_halo.tactics</tactics>
+		<protoaction>
+			<name>BlazingHalo</name>
+			<type>AutoRangedModify</type>
+			<modifyamount>-1</modifyamount>
+			<modifydamagetype>Divine</modifydamagetype>
+			<maxrange>6.0</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>BlazingHaloVFX</name>
+			<modelattachment>vfx\fire\fire_medium_01_cs.xml</modelattachment>
+			<modelattachmentbone>Spine</modelattachmentbone>
+		</protoaction>
+	</unit>
+
+	<!-- Powers -->
+	<unit name="Serpent">
+		<spawn type="dead" count="0" skipplacementcheck="">Serpent</spawn>
+	</unit>
+	<unit name="SeaSnake">
+		<spawn type="dead" count="0" skipplacementcheck="">SeaSnake</spawn>
+	</unit>
+	<unit name="Helper_PlagueOfSerpentsRespawner">
+		<displaynameid>STR_AGE_MYTHIC</displaynameid>
+		<animfile>misc\editor\cinematic_revealers\cinematic_revealer_to_all.xml</animfile>
+		<obstructionradiusx>0.1000</obstructionradiusx>
+		<obstructionradiusz>0.1000</obstructionradiusz>
+		<movementtype>air</movementtype>
+		<lifespan>30.0000</lifespan> <!-- Coordinate with Plague of Serpents duration -->
+		<unittype>EmbellishmentClass</unittype>
+		<flag>NoHPBar</flag>
+		<flag>Immoveable</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>NoUnitAI</flag>
+		<flag>NoIdleActions</flag>
+		<flag>NonCollideable</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSearchable</flag>
+		<flag>TieToWaterSurface</flag>
+		<flag>OnlyInEditor</flag>
+		<flag>NotSelectable</flag>
+		<flag>PlaceAnywhere</flag>
+		<flag>NotDeathTracked</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NotPlayerPlaceable</flag>
+		<flag>Invulnerable</flag>
+	</unit>
+
+	<unit name="SpiderEgg">
+		<initialhitpoints>280.0000</initialhitpoints>
+		<maxhitpoints>280.0000</maxhitpoints>
+		<spawn type="build" count="1" skipplacementcheck="">InitialSpiderEggSnare</spawn>
+		<armor type="Hack" value="0.3000"></armor>
+		<armor type="Pierce" value="0.6000"></armor>
+		<armor type="Crush" value="0.8000"></armor>
+		<flag>DisplayRange</flag>
+		<displayedrange>2.0000</displayedrange>
+		<tactics>spider_egg_snare.tactics</tactics>
+		<protoaction>
+			<name>SpiderEggSnare</name>
+			<maxrange>2.000000</maxrange>
+			<modifytype>Speed</modifytype>
+			<modifymultiplier>0.01</modifymultiplier>
+		</protoaction>
+	</unit>
+	<unit name="InitialSpiderEggSnare">
+		<obstructionradiusx>0.4000</obstructionradiusx>
+		<obstructionradiusz>0.4000</obstructionradiusz>
+		<lifespan>6.0000</lifespan>
+		<movementtype>land</movementtype>
+		<decay delay="0.0000" duration="0.5000"></decay>
+		<unittype>Unit</unittype>
+		<flag>Invulnerable</flag>
+		<flag>NonCollideable</flag>
+		<flag>NotSearchable</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSelectable</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>NoHPBar</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NoIdleActions</flag>
+		<flag>AreaDamageConstant</flag>
+		<flag>NotKBTracked</flag>
+		<flag>NotDeathTracked</flag>
+		<flag>BallisticTrackSource</flag>
+		<tactics>spider_egg_snare.tactics</tactics>
+		<protoaction>
+			<name>SpiderEggSnare</name>
+			<maxrange>2.500000</maxrange>
+			<modifytype>Speed</modifytype>
+			<modifymultiplier>0.01</modifymultiplier>
+		</protoaction>
+	</unit>
+	
+	<unit name="HesperidesTree">
+		<flag>DisplayRange</flag>
+		<displayedrange>18.0000</displayedrange>
+	</unit>
+	
+	<unit name="GreatFlood">
+		<displaynameid>STR_VFX_GREAT_FLOOD_NAME</displaynameid>
+		<animfile>chinese\godpowers\great_flood\great_flood.xml</animfile>
+		<obstructionradiusx>0.1000</obstructionradiusx>
+		<obstructionradiusz>0.1000</obstructionradiusz>
+		<decay delay="0.0000" duration="0.0000"></decay>
+		<movementtype>amphibious</movementtype>
+		<los>20.0000</los>
+		<flag>GivesLOSToAll</flag>
+		<flag>NoIdleActions</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>NoHPBar</flag>
+		<flag>NotSelectable</flag>
+		<flag>NotSearchable</flag>
+		<flag>DoNotDieAtZeroHitpoints</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NonCollideable</flag>
+		<flag>NotCommandable</flag>
+		<flag>PlaceAnywhere</flag>
+		<flag>TieToWaterSurface</flag>
+		<godpowerblockradius>10.0</godpowerblockradius>
+		<tactics>handattack.tactics</tactics>
+		<protoaction>
+			<name>HandAttack</name>
+			<rof>1.0</rof>
+			<damage type="Divine">2.000000</damage>
+			<damagebonus type="Building">6.00000</damagebonus>
+			<maxrange>0.300000</maxrange>
+		</protoaction>
+		<protoaction>
+			<name>InitialAttack</name>
+			<type>Attack</type>
+			<rof>1.0</rof>
+			<damage type="Crush">1200.000000</damage>
+			<maxrange>0.300000</maxrange>
+		</protoaction>
+	</unit>
+	<!-- UNUSED BUT KEPT FOR LEGACY
+	-->
+</protomods>

@@ -1,0 +1,20 @@
+<animfile validation="strict">
+	<attachment>FishingBuoy
+		<include>nature\animals\naval\fish\aquafarm_buoy.xml</include>
+	</attachment>
+	<component>ModelComp
+		<assetreference type="TMModel">
+			<file>nature\animals\naval\fish\herring\fish_herring</file>
+		</assetreference>
+		<attach name="FishingBuoy" attachpoint="fishing_buoy"></attach>
+	</component>
+	<anim>Idle
+		<assetreference type="TMAnimation">
+			<file>nature\animals\naval\fish\herring\anim\fish_herring_idle_a</file>
+		</assetreference>
+		<assetreference type="TMAnimation">
+			<file>nature\animals\naval\fish\herring\anim\fish_herring_idle_b</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+</animfile>

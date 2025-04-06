@@ -1,0 +1,131 @@
+<tactics>
+	<action>
+		<name>MonumentEmpowerAura</name>
+		<type>AutoRangedModify</type>
+		<active>0</active>
+		<modifyabstracttype>Building</modifyabstracttype>
+		<maxrange>30</maxrange>
+		<persistent>1</persistent>
+		<nostack>1</nostack>
+		<nostackignorepuid>1</nostackignorepuid>
+		<restrictifempowered>1</restrictifempowered>
+		<includeunbuilt>1</includeunbuilt>
+		<restrictempowertype>AbstractPharaoh</restrictempowertype>
+		<modifytype>AuraEmpower</modifytype>
+		<modelattachment>vfx\glow\empower_pharaoh.xml</modelattachment>
+		<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+		<empowerdata>
+			<logicaltypebuildingempoweredforlos>
+				<empowerrate modifytype="BuildRate">1.525</empowerrate>
+				<empowerrate modifytype="ResearchRate">1.525</empowerrate>
+				<empowerrate modifytype="LOSFactor">1.525</empowerrate>
+			</logicaltypebuildingempoweredforlos>
+			<logicaltypebuildingthatcanbeempowered>
+				<empowerrate modifytype="BuildRate">1.525</empowerrate>
+				<empowerrate modifytype="ResearchRate">1.525</empowerrate>
+				<empowerrate modifytype="MilitaryTrainingRate">1.525</empowerrate>
+				<empowerrate modifytype="ROF">0.65</empowerrate>
+				<empowerrate modifytype="FavorGatherRate">1.14</empowerrate>
+				<empowerrate modifytype="DropsiteRate">1.14</empowerrate>
+				<modelattachment>vfx\glow\empower_priest.xml</modelattachment>
+				<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+			</logicaltypebuildingthatcanbeempowered>
+		</empowerdata>
+		<natureempowerdata>
+			<abstractsettlement>
+				<empowerrate modifytype="BuildRate">1.525</empowerrate>
+				<modelattachment>vfx\glow\empower_priest.xml</modelattachment>
+				<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+			</abstractsettlement>
+		</natureempowerdata>
+	</action>
+	<action>
+		<name>MonumentEmpowerAuraSonOfOsiris</name>
+		<type>AutoRangedModify</type>
+		<active>0</active>
+		<modifyabstracttype>Building</modifyabstracttype>
+		<maxrange>30</maxrange>
+		<persistent>1</persistent>
+		<nostack>1</nostack>
+		<nostackignorepuid>1</nostackignorepuid>
+		<restrictifempowered>1</restrictifempowered>
+		<includeunbuilt>1</includeunbuilt>
+		<restrictempowertype>SonOfOsiris</restrictempowertype>
+		<modifytype>AuraEmpower</modifytype>
+		<modelattachment>vfx\glow\empower_pharaoh.xml</modelattachment>
+		<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+		<empowerdata>
+			<logicaltypebuildingempoweredforlos>
+				<empowerrate modifytype="BuildRate">1.83</empowerrate>
+				<empowerrate modifytype="ResearchRate">1.83</empowerrate>
+				<empowerrate modifytype="LOSFactor">1.83</empowerrate>
+			</logicaltypebuildingempoweredforlos>
+			<logicaltypebuildingthatcanbeempowered>
+				<empowerrate modifytype="BuildRate">1.83</empowerrate>
+				<empowerrate modifytype="ResearchRate">1.83</empowerrate>
+				<empowerrate modifytype="MilitaryTrainingRate">1.83</empowerrate>
+				<empowerrate modifytype="ROF">0.65</empowerrate>
+				<empowerrate modifytype="FavorGatherRate">1.008</empowerrate>
+				<empowerrate modifytype="DropsiteRate">1.008</empowerrate>
+				<modelattachment>vfx\glow\empower_priest.xml</modelattachment>
+				<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+			</logicaltypebuildingthatcanbeempowered>
+		</empowerdata>
+		<natureempowerdata>
+			<abstractsettlement>
+				<empowerrate modifytype="BuildRate">1.83</empowerrate>
+				<modelattachment>vfx\glow\empower_priest.xml</modelattachment>
+				<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+			</abstractsettlement>
+		</natureempowerdata>
+	</action>
+	<action>
+		<name>DevoteesMedium</name>
+		<type>AutoRangedModify</type>
+		<active>0</active>
+		<modifyprotoid>Barracks</modifyprotoid>
+		<maxrange>20</maxrange>
+		<persistent>1</persistent>
+		<nostack>1</nostack>
+		<nostackignorepuid>1</nostackignorepuid>
+		<modifytype>MilitaryTrainingCost</modifytype>
+		<modifymultiplier>0.90</modifymultiplier>
+		<empoweredmodifymultiplier>0.80</empoweredmodifymultiplier>
+		<modelattachment>vfx\glow\monument_aura_set_target_medium.xml</modelattachment>
+		<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+	</action>
+	<action>
+		<name>DevoteesLarge</name>
+		<type>AutoRangedModify</type>
+		<active>0</active>
+		<modifyprotoid>MigdolStronghold</modifyprotoid>
+		<maxrange>20</maxrange>
+		<persistent>1</persistent>
+		<nostack>1</nostack>
+		<nostackignorepuid>1</nostackignorepuid>
+		<modifytype>MilitaryTrainingCost</modifytype>
+		<modifymultiplier>0.90</modifymultiplier>
+		<empoweredmodifymultiplier>0.80</empoweredmodifymultiplier>
+		<modelattachment>vfx\glow\monument_aura_set_target_large.xml</modelattachment>
+		<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+	</action>
+	<action>
+		<name stringid="STR_ACTION_AUTO_GATHER">AutoGather</name>
+		<type>AutoGather</type>
+		<persistent>1</persistent>
+	</action>
+	<action>
+		<name>AreaHeal</name>
+		<active>0</active>
+		<type>AutoRangedModify</type>
+		<maxrange>40</maxrange>
+		<modifyabstracttype>LogicalTypeHealed</modifyabstracttype>
+		<persistent>1</persistent>
+		<modifytype>HealRate</modifytype>
+		<includeally>1</includeally>
+		<restrictifempowered>1</restrictifempowered>
+		<modelattachment>greek\godpowers\restoration\healing_vfx.xml</modelattachment>
+		<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+	</action>
+	<tactic>Default<action>AutoGather</action><action>MonumentEmpowerAura</action><action>DevoteesLarge</action><action>DevoteesMedium</action><action>AreaHeal</action></tactic>
+</tactics>

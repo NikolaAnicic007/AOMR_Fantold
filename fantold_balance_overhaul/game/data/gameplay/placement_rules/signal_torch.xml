@@ -1,0 +1,7 @@
+<placementrules>
+	<distanceatmostfromtype 
+		player="ally" foundation="any" 
+		distance="5" errorstringid="STR_ERROR_PLACEMENT_SIGNAL_TORCH_FAR">
+		AbstractFishingShip
+	</distanceatmostfromtype>
+</placementrules>

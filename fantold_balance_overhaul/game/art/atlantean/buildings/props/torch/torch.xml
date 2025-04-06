@@ -1,0 +1,19 @@
+<animfile validation="strict">
+	<component>ModelComp
+		<logic type="Variation">
+			<variant0>
+				<assetreference type="TMComposite">
+					<file>atlantean\buildings\props\torch\torch_a_short</file>
+				</assetreference>
+			</variant0>
+			<variant1>
+				<assetreference type="TMComposite">
+					<file>atlantean\buildings\props\torch\torch_a_tall</file>
+				</assetreference>
+			</variant1>
+		</logic>
+	</component>
+	<anim>Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

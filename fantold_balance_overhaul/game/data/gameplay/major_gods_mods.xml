@@ -1,0 +1,71 @@
+<civsmods>
+	<civ>
+		<name>Thor</name>
+		<bountyresourceearning>
+			<bountyreductionstart mergeMode="replace">150.0</bountyreductionstart>
+			<bountyreductionend mergeMode="replace">300.0</bountyreductionend>
+			<bountyreward mergeMode="replace" unittype="LogicalTypeMythUnitThatGeneratesFavor" condition="Damage" resourcetype="Favor">1.0</bountyreward>
+		</bountyresourceearning>
+	</civ>
+	<civ>
+		<name>Odin</name>
+		<bountyresourceearning>
+			<bountyreductionstart mergeMode="replace">150.0</bountyreductionstart>
+			<bountyreductionend mergeMode="replace">300.0</bountyreductionend>
+			<bountyreward mergeMode="replace" unittype="LogicalTypeMythUnitThatGeneratesFavor" condition="Damage" resourcetype="Favor">1.0</bountyreward>
+		</bountyresourceearning>
+	</civ>
+	<civ>
+		<name>Loki</name>
+		<bountyresourceearning>
+			<bountyreductionstart mergeMode="replace">150.0</bountyreductionstart>
+			<bountyreductionend mergeMode="replace">300.0</bountyreductionend>
+			<bountyreward mergeMode="replace" unittype="LogicalTypeMythUnitThatGeneratesFavor" condition="Damage" resourcetype="Favor">1.0</bountyreward>
+		</bountyresourceearning>
+	</civ>
+	<civ>
+		<name>Gaia</name>
+		<terraincreeps>
+			<terraincreep mergeMode="add" creep="GaiaCreep" maxradius="60.0" growthrate="1.00" decayrate="0.5" minupdateinterval="3.0" maxupdateinterval="4.0" avoidunbuildable="" avoidimpassable="">
+				<protounit>Wonder</protounit>
+			</terraincreep>
+		</terraincreeps>
+	</civ>
+	<civ>
+		<name>Oranos</name>
+		
+		<startingunits mergeMode="remove">
+			<unit count="1" delay="6.00" x="19.00" y="0.00" z="40.00">Oracle</unit>
+			<unit count="1" delay="10.00" x="-45.00" y="0.00" z="25.00">Oracle</unit>
+			<unit count="1" delay="14.00" x="12.00" y="0.00" z="-25.00">Oracle</unit>
+			<unit count="2" delay="2.00" x="-2.00" y="0.00" z="0.00">VillagerAtlantean</unit>
+		</startingunits>
+		<startingunits mergeMode="remove" mode="deathmatch">
+			<unit count="1" delay="4.00" x="7.00" y="0.00" z="28.00">Oracle</unit>
+			<unit count="1" delay="4.00" x="-20.00" y="0.00" z="28.00">Oracle</unit>
+			<unit count="1" delay="4.00" x="9.00" y="0.00" z="-8.00">Oracle</unit>
+			<unit count="6" delay="2.00" x="0.00" y="0.00" z="0.00">VillagerAtlantean</unit>
+		</startingunits>
+		
+		<startingunits mergeMode="add">
+			<unit count="1" delay="6.00" x="2.00" y="0.00" z="45.00">Oracle</unit>
+			<unit count="1" delay="24.00" x="45.00" y="0.00" z="-2.00">OracleHero</unit>
+			<unit count="2" delay="2.00" x="-2.00" y="0.00" z="0.00">VillagerAtlantean</unit>
+		</startingunits>
+		<startingunits mergeMode="add" mode="deathmatch">
+			<unit count="1" delay="4.00" x="-20.00" y="0.00" z="0.00">Oracle</unit>
+			<unit count="1" delay="8.00" x="20.00" y="0.00" z="0.00">OracleHero</unit>
+			<unit count="6" delay="2.00" x="0.00" y="0.00" z="0.00">VillagerAtlantean</unit>
+		</startingunits>
+	</civ>
+	<civ>
+		<name>Kronos</name>
+		<timeshifting maxconcurrenttimeshifts="1">
+			<protounit costratio="0.50" timeratio="0.500">CoastalSentryTower</protounit>
+			<protounit costratio="0.50" timeratio="0.500">CoastalMirrorTower</protounit>
+			<protounit costratio="0.50" timeratio="0.500">Palace</protounit>
+			<protounit costratio="0.50" timeratio="0.500">SentryTower</protounit>
+			<protounit costratio="0.50" timeratio="0.500">MirrorTower</protounit>
+		</timeshifting>
+	</civ>
+</civsmods>

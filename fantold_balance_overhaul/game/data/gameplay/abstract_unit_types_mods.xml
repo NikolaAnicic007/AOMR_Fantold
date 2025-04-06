@@ -1,0 +1,7 @@
+<abstractunittypesmods>
+	<abstractunittype>LogicalTypeBlazingArrowsAreaProjectile</abstractunittype>
+	<abstractunittype>HeroArcher</abstractunittype>
+	<abstractunittype>WolfpackMember</abstractunittype>
+	<abstractunittype>AbstractCoastalTower</abstractunittype>
+	<abstractunittype>AbstractAquafarm</abstractunittype>
+</abstractunittypesmods>

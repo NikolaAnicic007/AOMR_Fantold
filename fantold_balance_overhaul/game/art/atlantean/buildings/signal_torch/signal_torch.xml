@@ -1,0 +1,43 @@
+<animfile validation="strict">
+	<component>ModelComp
+		<logic type="BuildingCompletion">
+			<p0>
+				<assetreference type="TMComposite">
+					<file>shared\buildings\construction\construction_xsmall_a</file>
+				</assetreference>
+			</p0>
+			<p50>
+				<assetreference type="TMComposite">
+					<file>shared\buildings\construction\construction_xsmall_b</file>
+				</assetreference>
+			</p50>
+			<p100>
+				<logic type="Age">
+					<archaicage>
+						<assetreference type="TMComposite">
+							<file>norse\buildings\props\torch\torch_n_short</file>
+						</assetreference>
+					</archaicage>
+					<classicalage>
+						<assetreference type="TMComposite">
+							<file>atlantean\buildings\props\torch\torch_a_short</file>
+						</assetreference>
+					</classicalage>
+					<heroicage>
+						<assetreference type="TMComposite">
+							<file>atlantean\buildings\props\torch\torch_a_tall</file>
+						</assetreference>
+					</heroicage>
+					<mythicage>
+						<assetreference type="TMComposite">
+							<file>atlantean\buildings\props\torch\torch_a_tall</file>
+						</assetreference>
+					</mythicage>
+				</logic>
+			</p100>
+		</logic>
+	</component>
+	<anim>Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

@@ -1,0 +1,12 @@
+<placementrules>
+	<distanceatmostfromtype 
+		player="ally" foundation="any" 
+		distance="30" errorstringid="STR_ERROR_PLACEMENT_COASTAL_SENTRY_TOWER_FAR">
+		Dock
+	</distanceatmostfromtype>
+	<distanceatleastfromtype 
+		player="enemy" foundation="any" 
+		distance="30" errorstringid="STR_ERROR_PLACEMENT_COASTAL_SENTRY_TOWER_ENEMY">
+		Dock
+	</distanceatleastfromtype>
+</placementrules>

@@ -1,0 +1,13 @@
+<tactics>
+	<action>
+		<name>AreaHeal</name>
+		<type>AutoRangedModify</type>
+		<modifyabstracttype>LogicalTypeHealed</modifyabstracttype>
+		<persistent>1</persistent>
+		<modifytype>HealRate</modifytype>
+		<includeally>1</includeally>
+		<modelattachment>greek\godpowers\restoration\healing_vfx.xml</modelattachment>
+		<modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+	</action>
+	<tactic>Default<action>AreaHeal</action></tactic>
+</tactics>

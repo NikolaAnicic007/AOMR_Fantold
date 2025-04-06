@@ -1,0 +1,17 @@
+<animfile validation="strict">
+	<component>ModelComp
+	<logic type="BuildingCompletion">
+		<p0>
+			<assetreference type="TMComposite">
+				<file>egyptian\buildings\obelisk\obelisk_const</file>
+			</assetreference>
+		</p0>
+		<p100>
+			<assetreference type="TMComposite">
+				<file>egyptian\buildings\obelisk\obelisk</file>
+			</assetreference>
+		</p100>
+	</logic>
+	</component>
+	<anim>Idle<component>ModelComp</component></anim>
+</animfile>

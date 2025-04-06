@@ -1,0 +1,32 @@
+<animfile validation="strict">
+	<submodel>torch_g_short
+		<component>ModelComp
+			<assetreference type="TMComposite">
+				<file>greek\buildings\props\torch\torch_g_short</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>ModelComp</component>
+		</anim>
+	</submodel>
+	<submodel>torch_g_tall
+		<component>ModelComp
+			<assetreference type="TMComposite">
+				<file>greek\buildings\props\torch\torch_g_tall</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>ModelComp</component>
+		</anim>
+	</submodel>
+	<component>ModelComp
+		<logic type="Variation">
+			<variant0>
+				<submodelref ref="torch_g_short"></submodelref>
+			</variant0>
+			<variant1>
+				<submodelref ref="torch_g_tall"></submodelref>
+			</variant1>
+		</logic>
+	</component>
+</animfile>

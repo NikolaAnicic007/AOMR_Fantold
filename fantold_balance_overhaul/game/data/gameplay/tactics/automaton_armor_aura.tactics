@@ -1,0 +1,12 @@
+<tactics>
+	<action>
+		<name>AutomatonArmorAura</name>
+		<type>AutoRangedModify</type>
+		<modifyabstracttype>Unit</modifyabstracttype>
+		<forbidabstracttype>Ship</forbidabstracttype>
+		<persistent>1</persistent>
+		<nostack>1</nostack>
+		<nostackignorepuid>1</nostackignorepuid>
+	</action>
+	<tactic>Default<action>AutomatonArmorAura</action></tactic>
+</tactics>

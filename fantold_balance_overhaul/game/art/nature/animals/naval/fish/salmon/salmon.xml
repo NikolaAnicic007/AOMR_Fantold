@@ -1,0 +1,5 @@
+<animfile validation="strict">
+	<attachment>FishingBuoy<include>shared\ui\fishing_buoy\fishing_buoy.xml</include></attachment>
+	<component>ModelComp<assetreference type="TMModel"><file>nature\animals\naval\fish\salmon\fish_salmon</file></assetreference><attach name="FishingBuoy" attachpoint="fishing_buoy"></attach></component>
+	<anim>Idle<assetreference type="TMAnimation"><file>nature\animals\naval\fish\salmon\anim\fish_salmon_idle_a</file></assetreference><assetreference type="TMAnimation"><file>nature\animals\naval\fish\salmon\anim\fish_salmon_idle_b</file></assetreference><component>ModelComp</component></anim>
+</animfile>

@@ -1,0 +1,204 @@
+{
+    "visuals": [],
+    "animdata": [{
+            "file": "greek\\buildings\\signal_torch\\signal_torch.xml",
+            "visuallogics": [[{
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_a",
+                        "logic": ["BuildingCompletion", "p0"]
+                    }, {
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_b",
+                        "logic": ["BuildingCompletion", "p50"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_short",
+                        "logic": ["Age", "archaicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "greek\\buildings\\props\\torch\\torch_g_short",
+                        "logic": ["Age", "classicalage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "greek\\buildings\\props\\torch\\torch_g_tall",
+                        "logic": ["Age", "heroicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "greek\\buildings\\props\\torch\\torch_g_tall",
+                        "logic": ["Age", "mythicage", "BuildingCompletion", "p100"]
+                    }]],
+            "animations": [{
+                    "name": "Idle"
+                }]
+        }, {
+            "file": "egyptian\\buildings\\signal_torch\\signal_torch.xml",
+            "visuallogics": [[{
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_a",
+                        "logic": ["BuildingCompletion", "p0"]
+                    }, {
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_b",
+                        "logic": ["BuildingCompletion", "p50"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_short",
+                        "logic": ["Age", "archaicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "egyptian\\buildings\\props\\torch\\torch_e_short",
+                        "logic": ["Age", "classicalage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "egyptian\\buildings\\props\\torch\\torch_e_tall",
+                        "logic": ["Age", "heroicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "egyptian\\buildings\\props\\torch\\torch_e_tall",
+                        "logic": ["Age", "mythicage", "BuildingCompletion", "p100"]
+                    }]],
+            "animations": [{
+                    "name": "Idle"
+                }]
+        },{
+            "file": "norse\\buildings\\signal_torch\\signal_torch.xml",
+            "visuallogics": [[{
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_a",
+                        "logic": ["BuildingCompletion", "p0"]
+                    }, {
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_b",
+                        "logic": ["BuildingCompletion", "p50"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_short",
+                        "logic": ["Age", "archaicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_short",
+                        "logic": ["Age", "classicalage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_tall",
+                        "logic": ["Age", "heroicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_tall",
+                        "logic": ["Age", "mythicage", "BuildingCompletion", "p100"]
+                    }]],
+            "animations": [{
+                    "name": "Idle"
+                }]
+        }, {
+            "file": "atlantean\\buildings\\signal_torch\\signal_torch.xml",
+            "visuallogics": [[{
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_a",
+                        "logic": ["BuildingCompletion", "p0"]
+                    }, {
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_b",
+                        "logic": ["BuildingCompletion", "p50"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_short",
+                        "logic": ["Age", "archaicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "atlantean\\buildings\\props\\torch\\torch_a_short",
+                        "logic": ["Age", "classicalage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "atlantean\\buildings\\props\\torch\\torch_a_tall",
+                        "logic": ["Age", "heroicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "atlantean\\buildings\\props\\torch\\torch_a_tall",
+                        "logic": ["Age", "mythicage", "BuildingCompletion", "p100"]
+                    }]],
+            "animations": [{
+                    "name": "Idle"
+                }]
+        }, {
+            "file": "chinese\\buildings\\signal_torch\\signal_torch.xml",
+            "visuallogics": [[{
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_a",
+                        "logic": ["BuildingCompletion", "p0"]
+                    }, {
+                        "composite": "shared\\buildings\\construction\\construction_xsmall_b",
+                        "logic": ["BuildingCompletion", "p50"]
+                    }, {
+                        "composite": "norse\\buildings\\props\\torch\\torch_n_short",
+                        "logic": ["Age", "archaicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "chinese\\buildings\\props\\torch\\torch_c_short",
+                        "logic": ["Age", "classicalage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "chinese\\buildings\\props\\torch\\torch_c_tall",
+                        "logic": ["Age", "heroicage", "BuildingCompletion", "p100"]
+                    }, {
+                        "composite": "chinese\\buildings\\props\\torch\\torch_c_tall",
+                        "logic": ["Age", "mythicage", "BuildingCompletion", "p100"]
+                    }]],
+            "animations": [{
+                    "name": "Idle"
+                }]
+        }, {
+            "file": "nature\\animals\\naval\\fish\\salmon\\aquafarm_salmon.xml",
+            "visuallogics": [[{
+                        "model": "nature\\animals\\naval\\fish\\salmon\\fish_salmon"
+                    }]],
+            "animations": [{
+                    "name": "Idle",
+                    "versioncount": 2,
+                    "versions": [{
+                            "file": "nature\\animals\\naval\\fish\\salmon\\anim\\fish_salmon_idle_a",
+                            "duration": 14.0
+                        }, {
+                            "file": "nature\\animals\\naval\\fish\\salmon\\anim\\fish_salmon_idle_b",
+                            "duration": 14.0
+                        }]
+                }]
+        }, {
+            "file": "nature\\animals\\naval\\fish\\mahi\\aquafarm_mahi.xml",
+            "visuallogics": [[{
+                        "model": "nature\\animals\\naval\\fish\\mahi\\fish_mahi"
+                    }]],
+            "animations": [{
+                    "name": "Idle",
+                    "versioncount": 2,
+                    "versions": [{
+                            "file": "nature\\animals\\naval\\fish\\mahi\\anim\\fish_mahi_idle_a",
+                            "duration": 14.0
+                        }, {
+                            "file": "nature\\animals\\naval\\fish\\mahi\\anim\\fish_mahi_idle_b",
+                            "duration": 14.0
+                        }]
+                }]
+        }, {
+            "file": "nature\\animals\\naval\\fish\\herring\\aquafarm_herring.xml",
+            "visuallogics": [[{
+                        "model": "nature\\animals\\naval\\fish\\herring\\fish_herring"
+                    }]],
+            "animations": [{
+                    "name": "Idle",
+                    "versioncount": 2,
+                    "versions": [{
+                            "file": "nature\\animals\\naval\\fish\\herring\\anim\\fish_herring_idle_a",
+                            "duration": 14.0
+                        }, {
+                            "file": "nature\\animals\\naval\\fish\\herring\\anim\\fish_herring_idle_b",
+                            "duration": 14.0
+                        }]
+                }]
+        }, {
+            "file": "nature\\animals\\naval\\fish\\perch\\aquafarm_perch.xml",
+            "visuallogics": [[{
+                        "model": "nature\\animals\\naval\\fish\\perch\\fish_perch"
+                    }]],
+            "animations": [{
+                    "name": "Idle",
+                    "versioncount": 2,
+                    "versions": [{
+                            "file": "nature\\animals\\naval\\fish\\perch\\anim\\fish_perch_idle_a",
+                            "duration": 14.0
+                        }, {
+                            "file": "nature\\animals\\naval\\fish\\perch\\anim\\fish_perch_idle_b",
+                            "duration": 14.0
+                        }]
+                }]
+        }, {
+            "file": "nature\\animals\\naval\\fish\\aquafarm_buoy.xml",
+            "visuallogics": [[{
+                        "model": "shared\\ui\\fishing_buoy\\fishing_buoy"
+                    }]],
+            "animations": [{
+                    "name": "Idle",
+                    "versioncount": 2,
+                    "versions": [{
+                            "file": "shared\\ui\\fishing_buoy\\anim\\buoy_idle_a",
+                            "duration": 3.5
+                        }, {
+                            "file": "shared\\ui\\fishing_buoy\\anim\\buoy_idle_a",
+                            "duration": 3.5
+                        }]
+                }]
+        }]
+}

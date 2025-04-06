@@ -1,0 +1,12 @@
+<placementrules>
+	<distanceatmostfromtype 
+		player="ally" foundation="any" 
+		distance="5" errorstringid="STR_ERROR_PLACEMENT_NORSE_BONFIRE_FAR">
+		AbstractWarship
+	</distanceatmostfromtype>
+	<distanceatleastfromtype 
+		player="ally" foundation="any" 
+		distance="5" errorstringid="STR_ERROR_PLACEMENT_NORSE_BONFIRE_CLOSE">
+		NorseBonfire
+	</distanceatleastfromtype>
+</placementrules>

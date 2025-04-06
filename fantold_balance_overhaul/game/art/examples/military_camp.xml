@@ -1,0 +1,64 @@
+<!-- Example animfile w/ cleaned formatting : Find more in ArtCiv / Shared / SPC -->
+<animfile validation="strict">
+	<attachment>socket
+		<component>ModelComp
+			<assetreference type="TMComposite">
+				<file>chinese\buildings\sockets\socket_empty</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>ModelComp</component>
+		</anim>
+	</attachment>
+	<component>ModelComp
+		<logic type="BuildingCompletion">
+			<p0>
+				<assetreference type="TMComposite">
+					<file>shared\buildings\construction\construction_medium_a</file>
+				</assetreference>
+			</p0>
+			<p33>
+				<assetreference type="TMComposite">
+					<file>shared\buildings\construction\construction_medium_b</file>
+				</assetreference>
+			</p33>
+			<p66>
+				<assetreference type="TMModel">
+					<file>chinese\buildings\military_camp\military_camp_const3_fe</file>
+				</assetreference>
+			</p66>
+			<p100>
+				<logic type="Age">
+					<archaicage>
+						<assetreference type="TMComposite">
+							<file>chinese\buildings\military_camp\military_camp_age2_fe</file>
+							<materialvariant index="1"></materialvariant>
+						</assetreference>
+					</archaicage>
+					<classicalage>
+						<assetreference type="TMComposite">
+							<file>chinese\buildings\military_camp\military_camp_age2_fe</file>
+							<materialvariant index="1"></materialvariant>
+						</assetreference>
+					</classicalage>
+					<heroicage>
+						<assetreference type="TMComposite">
+							<file>chinese\buildings\military_camp\military_camp_age3_fe</file>
+							<materialvariant index="0"></materialvariant>
+						</assetreference>
+					</heroicage>
+					<mythicage>
+						<assetreference type="TMComposite">
+							<file>chinese\buildings\military_camp\military_camp_age4_fe</file>
+							<materialvariant index="2"></materialvariant>
+						</assetreference>
+					</mythicage>
+				</logic>
+				<attach name="socket" attachpoint="socket"></attach>
+			</p100>
+		</logic>
+	</component>
+	<anim>Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

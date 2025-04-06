@@ -1,0 +1,34 @@
+<tactics>
+	<action>
+		<name stringid="STR_ACTION_HAND">HandAttack</name>
+		<type>Attack</type>
+		<rate type="All">1.0</rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<anim>HandAttack</anim>
+		<onhiteffect type="Snare" duration="2" rate="0.85"></onhiteffect>
+		<impacteffect>effects\impacts\hack</impacteffect>
+	</action>
+	<action>
+		<name>IncreaseDamageWithLikeUnits</name>
+		<type>LikeBonus</type>
+		<persistent>1</persistent>
+		<modifyratebytype>1</modifyratebytype>
+		<modifyabstracttype>WolfpackMember</modifyabstracttype>
+		<modifytype>DamageSpecific</modifytype>
+		<modifydamagetype>Hack</modifydamagetype>
+		<modifyexponent>1.0</modifyexponent>
+		<modifybase>1.0</modifybase>
+	</action>
+	<action>
+		<name>IncreaseSpeedWithLikeUnits</name>
+		<type>LikeBonus</type>
+		<modifyratebytype>1</modifyratebytype>
+		<modifyabstracttype>WolfpackMember</modifyabstracttype>
+		<persistent>1</persistent>
+		<modifytype>Speed</modifytype>
+		<modifyexponent>1.0</modifyexponent>
+		<modifybase>1.0</modifybase>
+	</action>
+	<tactic>Default<action priority="100">HandAttack</action><action>IncreaseDamageWithLikeUnits</action><action>IncreaseSpeedWithLikeUnits</action><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><attackmovetype>AbstractWall</attackmovetype></tactic>
+</tactics>

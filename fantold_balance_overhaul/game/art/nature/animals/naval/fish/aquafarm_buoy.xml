@@ -1,0 +1,16 @@
+<animfile validation="strict">
+	<component>ModelComp
+		<assetreference type="TMModel">
+			<file>shared\ui\fishing_buoy\fishing_buoy</file>
+		</assetreference>
+	</component>
+	<anim>Idle
+		<assetreference type="TMAnimation">
+			<file>shared\ui\fishing_buoy\anim\buoy_idle_a</file>
+		</assetreference>
+		<assetreference type="TMAnimation">
+			<file>shared\ui\fishing_buoy\anim\buoy_idle_a</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+</animfile>

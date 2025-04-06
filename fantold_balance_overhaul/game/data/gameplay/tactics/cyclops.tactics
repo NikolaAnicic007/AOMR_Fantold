@@ -1,0 +1,36 @@
+<tactics>
+	<action>
+		<name stringid="STR_ACTION_THROW">Throw</name>
+		<type>Throw</type>
+		<rate type="LogicalTypeVillagerNotHero">1.0</rate>
+		<rate type="HumanSoldier">1.0</rate>
+		<rate type="TradeUnit">1.0</rate>
+		<minrate type="Building">1.0</minrate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<forceareaattacktarget>1</forceareaattacktarget>
+		<impacteffect>effects\impacts\crush</impacteffect>
+		<chargeaction>1</chargeaction>
+	</action>
+	<action>
+		<name stringid="STR_ACTION_HAND">AreaHandAttack</name>
+		<type>Attack</type>
+		<rate type="All">1.0</rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<anim>HandAttack</anim>
+		<onhiteffect type="Snare" duration="2" rate="0.85"></onhiteffect>
+		<impacteffect>effects\impacts\crush</impacteffect>
+	</action>
+	<action>
+		<name stringid="STR_ACTION_HAND">HandAttack</name>
+		<type>Attack</type>
+		<rate type="All">1.0</rate>
+		<attackaction>1</attackaction>
+		<handlogic>1</handlogic>
+		<anim>HandAttack</anim>
+		<onhiteffect type="Snare" duration="2" rate="0.85"></onhiteffect>
+		<impacteffect>effects\impacts\crush</impacteffect>
+	</action>
+	<tactic>Default<action priority="100">Throw</action><action priority="90">AreaHandAttack</action><action priority="80">HandAttack</action><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><attackmovetype>AbstractWall</attackmovetype></tactic>
+</tactics>

@@ -1,0 +1,14 @@
+<tactics>
+	<action>
+		<name>Hysteria</name>
+		<type>AutoRangedModify</type>
+		<modifyabstracttype>Unit</modifyabstracttype>
+		<forbidabstracttype>Ship</forbidabstracttype>
+		<nostack>1</nostack>
+		<persistent>1</persistent>
+		<targetenemy>1</targetenemy>
+		<singleunit>1</singleunit>
+		<attachvalidtargetonly>1</attachvalidtargetonly>
+	</action>
+	<tactic>Default<action>Hysteria</action></tactic>
+</tactics>

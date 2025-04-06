@@ -1,0 +1,12 @@
+<tactics>
+	<action>
+		<name>SpiderEggSnare</name>
+		<type>AutoRangedModify</type>
+		<modifyabstracttype>Unit</modifyabstracttype>
+		<forbidabstracttype>Ship</forbidabstracttype>
+		<nostack>1</nostack>
+		<persistent>1</persistent>
+		<targetenemy>1</targetenemy>
+	</action>
+	<tactic>Default<action>SpiderEggSnare</action></tactic>
+</tactics>

@@ -1,0 +1,5 @@
+<animfile validation="strict">
+	<submodel>torch_n_short<component>ModelComp<assetreference type="TMComposite"><file>norse\buildings\props\torch\torch_n_short</file></assetreference></component><anim>Idle<component>ModelComp</component></anim></submodel>
+	<submodel>torch_n_tall<component>ModelComp<assetreference type="TMComposite"><file>norse\buildings\props\torch\torch_n_tall</file></assetreference></component><anim>Idle<component>ModelComp</component></anim></submodel>
+	<component>ModelComp<logic type="Variation"><variant0><submodelref ref="torch_n_short"></submodelref></variant0><variant1><submodelref ref="torch_n_tall"></submodelref></variant1></logic></component>
+</animfile>

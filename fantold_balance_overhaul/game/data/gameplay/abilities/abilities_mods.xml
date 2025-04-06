@@ -1,0 +1,29 @@
+<abilitiesmods>
+	<automaton>
+		<ability>AbilityAutomatonAura<alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</automaton>
+	<nidhogg>
+		<ability>AbilityNidhoggAura<alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</nidhogg>
+	<hoplite>
+		<ability>AbilityPhobosSpearOfPanic<tech>PhobosSpearOfPanic</tech><alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</hoplite>
+	<militia>
+		<ability>AbilityPhobosSpearOfPanic<tech>PhobosSpearOfPanic</tech><alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</militia>
+	<prodromos>
+		<ability>AbilityPhobosSpearOfPanic<tech>PhobosSpearOfPanic</tech><alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</prodromos>
+	<manor>
+		<ability>AbilityTemporalSoldiers<tech>TemporalChaos</tech><alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</manor>
+	<fenriswolf>
+		<ability>AbilityFenrisWolfBrood<alwaysdisabledingrid>1</alwaysdisabledingrid></ability>
+	</fenriswolf>
+	<seasnakescout>
+		<ability>AbilityAutoScout<noautocast>true</noautocast></ability>
+	</seasnakescout>
+	<oraclehero>
+		<ability>AbilityAutoScout<noautocast>true</noautocast></ability>
+	</oraclehero>
+</abilitiesmods>

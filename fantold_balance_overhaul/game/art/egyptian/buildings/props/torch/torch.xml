@@ -1,0 +1,5 @@
+<animfile validation="strict">
+	<submodel>torch_e_short<include>egyptian\buildings\props\torch\torch_e_short.xml</include></submodel>
+	<submodel>torch_e_tall<include>egyptian\buildings\props\torch\torch_e_tall.xml</include></submodel>
+	<component>ModelComp<logic type="Variation"><variant0><submodelref ref="torch_e_short"></submodelref></variant0><variant1><submodelref ref="torch_e_tall"></submodelref></variant1></logic></component>
+</animfile>

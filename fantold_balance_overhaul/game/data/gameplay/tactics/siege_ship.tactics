@@ -1,0 +1,35 @@
+<tactics>
+	<action>
+		<name stringid="STR_ACTION_SIEGE">SiegeAttack</name>
+		<type>Attack</type>
+		<attackaction>1</attackaction>
+		<rangedlogic>1</rangedlogic>
+		<anim>RangedAttack</anim>
+		<accuracy>1.0</accuracy>
+		<maxspread>5.0</maxspread>
+		<spreadfactor>0.25</spreadfactor>
+		<trackrating>1.0</trackrating>
+		<impacteffect>effects\impacts\crush_medium</impacteffect>
+		<rate type="All">1.0</rate>
+		<rate type="Unit">1.0</rate>
+		<rate type="Ship">1.0</rate>
+		<volleymode>1</volleymode>
+	</action>
+	<action>
+		<name stringid="STR_ACTION_RANGED">RangedAttack</name>
+		<type>Attack</type>
+		<attackaction>1</attackaction>
+		<rangedlogic>1</rangedlogic>
+		<anim>RangedAttack</anim>
+		<accuracy>0.8</accuracy>
+		<maxspread>5.0</maxspread>
+		<spreadfactor>0.25</spreadfactor>
+		<trackrating>1.0</trackrating>
+		<impacteffect>effects\impacts\pierce</impacteffect>
+		<rate type="All">1.0</rate>
+		<rate type="Unit">1.0</rate>
+		<rate type="Ship">1.0</rate>
+		<volleymode>1</volleymode>
+	</action>
+	<tactic>Default<action priority="100">SiegeAttack</action><action priority="90">RangedAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><attackmovetype>AbstractWall</attackmovetype></tactic>
+</tactics>
