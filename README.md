@@ -1,2 +1,2 @@
 # AOMR_Fantold
-Version tracking for a Balance Overhaul mod for Age of Mythology: Retold.
+Version tracking for Fantold: Balance Overhaul, a mod for Age of Mythology: Retold.
