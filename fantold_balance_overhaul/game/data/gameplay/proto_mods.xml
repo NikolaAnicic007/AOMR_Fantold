@@ -3508,16 +3508,16 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 			<unittype>Dock</unittype>
 		</dynamicbuildlimitunittypes>
 		
-		<flag>CastAbilitySelf</flag>
-		<flag>AutoAbilityStartDisabled</flag>
-		<flag>RangeIndicatorForAbilityCasting</flag>
-		<tactics>rangedattack_lantern.tactics</tactics>
-		<rechargetime>90.0000</rechargetime>
-		
 		<contain>LogicalTypeGarrisonInShips</contain>
 		<notcontain>AbstractSiegeWeapon</notcontain>
 		<containedhitpointbonus>60.0000</containedhitpointbonus>
 		<containedspeedbonus>0.1</containedspeedbonus>
+		
+		<flag>CastAbilitySelf</flag>
+		<flag>AutoAbilityStartDisabled</flag>
+		<flag>RangeIndicatorForAbilityCasting</flag>
+		<tactics>rangedattack_lantern.tactics</tactics>
+		<rechargetime>60.0000</rechargetime>
 		<protoaction>
 			<name>RangedAttack</name>
 			<containscalebasedamage>1</containscalebasedamage>
@@ -3563,26 +3563,13 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 		<dynamicbuildlimitunittypes>
 			<unittype>Dock</unittype>
 		</dynamicbuildlimitunittypes>
-				
-		<flag>CastAbilitySelf</flag>
-		<flag>AutoAbilityStartDisabled</flag>
-		<flag>RangeIndicatorForAbilityCasting</flag>
-		<tactics>handattack_lantern.tactics</tactics>
-		<rechargetime>90.0000</rechargetime>
+		
 		<protoaction>
 			<name>HandAttack</name>
 			<rof>1.500000</rof>
 			<damage type="Hack">32.000000</damage>
 			<maxrange>2.000000</maxrange>
 			<impacteffect>effects\impacts\hack_medium</impacteffect>
-		</protoaction>
-		<protoaction>
-			<name>ReleaseSkyLantern</name>
-			<maxrange>90.00000</maxrange>
-			<rate type="SkyLantern">1.000000</rate>
-			<timer>30.00000</timer>
-			<modifyduration>50</modifyduration>
-			<anim>ReleaseSkyLantern</anim>
 		</protoaction>
 	</unit>
 	<unit name="Louchuan">  <!-- Siege -->
@@ -3617,12 +3604,6 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 		<contain>AbstractSiegeWeapon</contain>
 		<flag>AllowAutoGarrison</flag>
 		<flag>ContainedLOS</flag>
-		
-		<flag>CastAbilitySelf</flag>
-		<flag>AutoAbilityStartDisabled</flag>
-		<flag>RangeIndicatorForAbilityCasting</flag>
-		<tactics>rangedattack_lantern.tactics</tactics>
-		<rechargetime>90.0000</rechargetime>
 		<protoaction mergeMode="replace">
 			<name>RangedAttack</name>
 			<rof>2.000000</rof>
@@ -3637,14 +3618,6 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 				<rate type="Unit">0.200000</rate>
 			</scalebycontainedunittype>
 			<volleymode></volleymode>
-		</protoaction>
-		<protoaction>
-			<name>ReleaseSkyLantern</name>
-			<maxrange>90.00000</maxrange>
-			<rate type="SkyLantern">1.000000</rate>
-			<timer>30.00000</timer>
-			<modifyduration>50</modifyduration>
-			<anim>ReleaseSkyLantern</anim>
 		</protoaction>
 	</unit>
 	<unit name="Chiwen">

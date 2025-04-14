@@ -29,13 +29,4 @@
 	<doujian>
 		<ability>AbilityChineseWarship<chargetimeasrof>1</chargetimeasrof><donotforcestop>1</donotforcestop></ability>
 	</doujian>
-	<doujian>
-		<ability>AbilityChineseWarship<chargetimeasrof>1</chargetimeasrof><donotforcestop>1</donotforcestop></ability>
-	</doujian>
-	<mengchong>
-		<ability>AbilityChineseWarship<chargetimeasrof>1</chargetimeasrof><donotforcestop>1</donotforcestop></ability>
-	</mengchong>
-	<louchuan>
-		<ability>AbilityChineseWarship<chargetimeasrof>1</chargetimeasrof><donotforcestop>1</donotforcestop></ability>
-	</louchuan>
 </abilitiesmods>
