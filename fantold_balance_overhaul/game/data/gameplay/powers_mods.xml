@@ -8,6 +8,7 @@
 		<cost mergeMode="replace">35.0</cost>
 		<repeatcost mergeMode="replace">15.0</repeatcost>
 	</power>
+	
 	<power name="GreatHunt" type="GreatHunt" godpower="">
 		<maxfood mergeMode="replace" age="1">800.0</maxfood>
 		<maxfood mergeMode="replace" age="2">1200.0</maxfood>
@@ -44,6 +45,14 @@
 		<displaynameid>STR_ABILITY_TEMPORAL_SOLDIERS</displaynameid>
 		<rolloverid>STR_ABILITY_TEMPORAL_SOLDIERS_LR</rolloverid>
 		<icon>atlantean\static_color\technologies\temporal_chaos_icon.png</icon>
+	</power>
+	<power name="AbilityChineseWarship" type="UnitAction">
+		<displaynameid>STR_ABILITY_RELEASE_SKY_LANTERNS</displaynameid>
+		<rolloverid>STR_ABILITY_RELEASE_SKY_LANTERNS_LR</rolloverid>
+		<icon>chinese\static_color\abilities\xianfeng_ability_icon.png</icon>
+		<placement>Skip</placement>
+		<rangeindicator range="10.0" width="3.0">Arrow</rangeindicator>
+		<unitaction>ReleaseSkyLantern</unitaction>
 	</power>
 	<power name="SpiderLair" type="Spiders" godpower="">
 		<cost>5.0</cost>
@@ -85,6 +94,24 @@
 		<!-- Add an invisible non blocking unit with lifespan to the TempUnit godpower. 
 		And in techtree an volatile revertible tech that checks if there is at least one of this helper unit (similar tech 
 		like WonderAge checking for a wonder). This way you could activate your tech effect as long the godpower is active. -->
+    </power>
+    <power name="Fantold_Pestilence" type="TempUnit" godpower="">
+		<displaynameid>STR_POWER_PESTILENCE</displaynameid>
+		<rolloverid>STR_POWER_PESTILENCE_LR</rolloverid>
+		<icon>greek\static_color\god_powers\pestilence_icon.png</icon>
+		<minimapeventtime sendalertto="All">15.0</minimapeventtime>
+		<placement>Full</placement>
+		<reveallos radius="25.0">Revealer</reveallos>
+		<rangeindicator range="25.0" speed="0.2">Circle</rangeindicator>
+		<soundset type="StartSound" listenertype="AllExceptCaster">GodPowerStart</soundset>
+		<soundset type="StartSound" listenertype="IfOnScreenAll">PestilenceBirth</soundset>
+		<soundset type="EndSound" listenertype="All">GodPowerEnd</soundset>
+		<activetime>18.0</activetime>
+		<radius>25.0</radius>
+        
+        <cost>60.0</cost>
+		<repeatcost>20.0</repeatcost>
+		<createunit quantity="1" minradius="0" maxradius="1" delay="0.0">Helper_Pestilence</createunit>
     </power>
 	
 	<power name="GreatFlood" type="GreatFlood" godpower="">

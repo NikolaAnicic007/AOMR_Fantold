@@ -820,6 +820,7 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 		<displayedrange>11.0000</displayedrange> <!-- Feet of the Jackal also increase -->
 		<flag>AreaDamageConstant</flag>
 		<flag>DisplayRange</flag>
+		<flag>RangeIndicatorForAbilityCasting</flag>
 	</unit>
 	
 	<unit name="Scarab">
@@ -3507,6 +3508,12 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 			<unittype>Dock</unittype>
 		</dynamicbuildlimitunittypes>
 		
+		<flag>CastAbilitySelf</flag>
+		<flag>AutoAbilityStartDisabled</flag>
+		<flag>RangeIndicatorForAbilityCasting</flag>
+		<tactics>rangedattack_lantern.tactics</tactics>
+		<rechargetime>90.0000</rechargetime>
+		
 		<contain>LogicalTypeGarrisonInShips</contain>
 		<notcontain>AbstractSiegeWeapon</notcontain>
 		<containedhitpointbonus>60.0000</containedhitpointbonus>
@@ -3519,6 +3526,14 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 				<rate type="Unit">0.100000</rate>
 			</scalebycontainedunittype>
 			<damagefactorcap>1.5</damagefactorcap>
+		</protoaction>
+		<protoaction>
+			<name>ReleaseSkyLantern</name>
+			<maxrange>90.00000</maxrange>
+			<rate type="SkyLantern">1.000000</rate>
+			<timer>30.00000</timer>
+			<modifyduration>50</modifyduration>
+			<anim>ReleaseSkyLantern</anim>
 		</protoaction>
 	</unit>
 	<unit name="Mengchong"> <!-- Melee -->
@@ -3549,12 +3564,25 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 			<unittype>Dock</unittype>
 		</dynamicbuildlimitunittypes>
 				
+		<flag>CastAbilitySelf</flag>
+		<flag>AutoAbilityStartDisabled</flag>
+		<flag>RangeIndicatorForAbilityCasting</flag>
+		<tactics>handattack_lantern.tactics</tactics>
+		<rechargetime>90.0000</rechargetime>
 		<protoaction>
 			<name>HandAttack</name>
 			<rof>1.500000</rof>
 			<damage type="Hack">32.000000</damage>
 			<maxrange>2.000000</maxrange>
 			<impacteffect>effects\impacts\hack_medium</impacteffect>
+		</protoaction>
+		<protoaction>
+			<name>ReleaseSkyLantern</name>
+			<maxrange>90.00000</maxrange>
+			<rate type="SkyLantern">1.000000</rate>
+			<timer>30.00000</timer>
+			<modifyduration>50</modifyduration>
+			<anim>ReleaseSkyLantern</anim>
 		</protoaction>
 	</unit>
 	<unit name="Louchuan">  <!-- Siege -->
@@ -3590,6 +3618,11 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 		<flag>AllowAutoGarrison</flag>
 		<flag>ContainedLOS</flag>
 		
+		<flag>CastAbilitySelf</flag>
+		<flag>AutoAbilityStartDisabled</flag>
+		<flag>RangeIndicatorForAbilityCasting</flag>
+		<tactics>rangedattack_lantern.tactics</tactics>
+		<rechargetime>90.0000</rechargetime>
 		<protoaction mergeMode="replace">
 			<name>RangedAttack</name>
 			<rof>2.000000</rof>
@@ -3604,6 +3637,14 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 				<rate type="Unit">0.200000</rate>
 			</scalebycontainedunittype>
 			<volleymode></volleymode>
+		</protoaction>
+		<protoaction>
+			<name>ReleaseSkyLantern</name>
+			<maxrange>90.00000</maxrange>
+			<rate type="SkyLantern">1.000000</rate>
+			<timer>30.00000</timer>
+			<modifyduration>50</modifyduration>
+			<anim>ReleaseSkyLantern</anim>
 		</protoaction>
 	</unit>
 	<unit name="Chiwen">
@@ -3884,6 +3925,51 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 		<flag>DontRotateObstruction</flag>
 		<flag>NotPlayerPlaceable</flag>
 		<flag>Invulnerable</flag>
+	</unit>
+	<unit name="Helper_Pestilence">
+		<displaynameid>STR_POWER_PESTILENCE</displaynameid>
+		<animfile>greek\godpowers\pestilence\pestilence_large_vfx.xml</animfile>
+		<obstructionradiusx>0.1000</obstructionradiusx>
+		<obstructionradiusz>0.1000</obstructionradiusz>
+		<movementtype>air</movementtype>
+		<lifespan>0.0010</lifespan> <!-- Doesn't work with Lifespan: 0-->
+		<decay delay="0.0000" duration="2.0000"></decay>
+		<unittype>EmbellishmentClass</unittype>
+		<flag>NoHPBar</flag>
+		<!-- Has to have Unit AI -->
+		<flag>NoIdleActions</flag>
+		<flag>NonCollideable</flag>
+		<flag>NonAutoFormedUnit</flag>
+		<flag>DoNotShowOnMiniMap</flag>
+		<flag>NotSearchable</flag>
+		<flag>TieToWaterSurface</flag>
+		<!-- Should not be OnlyInEditor -->
+		<flag>NotSelectable</flag>
+		<flag>PlaceAnywhere</flag>
+		<flag>Immoveable</flag>
+		<flag>NotDeathTracked</flag>
+		<flag>DontRotateObstruction</flag>
+		<flag>NotPlayerPlaceable</flag>
+		<flag>Invulnerable</flag>
+		<!--<birthprotoaction>BirthAttack</birthprotoaction>--> <!-- Doesn't work without birth anim -->
+		<selfdestructprotoaction>BirthAttack</selfdestructprotoaction>
+		<tactics>handattack.tactics</tactics>
+		<protoaction>
+			<name notactics="">BirthAttack</name>
+			<type>Attack</type>
+			<damage type="Hack">0.001000</damage>
+			<damagearea>25.000000</damagearea>	<!-- Match Pestilence RADIUS -->
+			<damageflags>Nature|Enemy</damageflags>
+			<attackaction>1</attackaction>
+			<rate type="Unit">1.0</rate>
+			<!-- Match Pestilence DURATION -->
+			<onhiteffect type="StatModify" duration="18.000000">
+				<modify type="MaxHP">0.800000</modify>
+				<modify type="Speed">0.600000</modify>
+			</onhiteffect>
+			<onhiteffect type="Attach" proto="VFXFeiInfection" attachbone="spine" duration="18.000000"></onhiteffect>
+			<!-- Match Pestilence DURATION -->
+		</protoaction>
 	</unit>
 
 	<unit name="SpiderEgg">

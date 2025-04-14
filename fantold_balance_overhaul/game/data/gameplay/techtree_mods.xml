@@ -966,6 +966,16 @@ N4: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 	<!-- ### MAJOR GODS ### -->
 	<!-- ### MINOR GODS ### -->
 	<!-- GREEK -->
+	<tech name="ClassicalAgeAres">
+		<effects>
+			<effect mergeMode="Remove" type="Data" subtype="GodPower" power="Pestilence" amount="1.0" cooldown="120.0" relativity="Absolute">
+				<target type="Player"></target>
+			</effect>
+			<effect mergeMode="Add" type="Data" subtype="GodPower" power="Fantold_Pestilence" amount="1.0" cooldown="120.0" relativity="Absolute">
+				<target type="Player"></target>
+			</effect>
+		</effects>
+	</tech>
 	<tech name="WillOfKronos">
 		<effects mergeMode="replace">
 			<effect type="Data" action="Throw" amount="2.00" subtype="Damage" relativity="BasePercent">
