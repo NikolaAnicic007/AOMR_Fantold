@@ -2235,6 +2235,7 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 		<flag>FadeInOnBuild</flag>
 		<flag>Doppled</flag>
 		<flag>NonSolid</flag>
+		<flag>NonCollideable</flag>
 		<flag>NoIdleActions</flag>
 		<flag>NonAutoFormedUnit</flag>
 		<flag>ObscuredByUnits</flag>
