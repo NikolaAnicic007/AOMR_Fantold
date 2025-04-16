@@ -1300,6 +1300,7 @@ N5: Ctrl+[Number] / Ctrl+Alt+[Number] to Fold/Unfold All Level [Number]. Level 2
 			<unittype>Dock</unittype>
 		</dynamicbuildlimitunittypes>
 		<train row="0" column="5">Dock</train>
+		<train row="1" column="3">Aquafarm</train>
 		<train row="255" column="255">NavalShipyard</train>
 		<train row="255" column="255">CoastalSentryTower</train>
 		<train row="255" column="255">Market</train>
